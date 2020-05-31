@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=SVG Viewer
+Exec=/usr/bin/feh --conversion-timeout 10 %F

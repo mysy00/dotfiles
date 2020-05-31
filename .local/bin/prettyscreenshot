@@ -1,0 +1,17 @@
+#!/bin/fish
+
+maim -st 9999999 | convert - \( +clone -background black -shadow 80x3+5+5 \) +swap -background none -layers merge +repage screenshot.png
+
+#[ -d $XDG_PICTURES_DIR/Screenshots ] && mkdir "$XDG_PICTURES_DIR/Screenshots"
+
+if not test -d $XDG_PICTURES_DIR/Screenshots
+  mkdir "$XDG_PICTURES_DIR/Screenshots"
+end
+
+set screenshot_date (date "+%Y-%m-%d_%H:%M:%S")
+
+mv screenshot.png "$XDG_PICTURES_DIR/Screenshots/screenshot_$screenshot_date.png"
+
+
+
+#         "maim (xdg-user-dir PICTURES)/Screenshots/screenshot_(date \"+%Y-%m-%d_%H:%M:%S\").png"
