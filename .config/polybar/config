@@ -45,26 +45,20 @@ module-margin-left = 3
 module-margin-right = 3
 
 ;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-#font-1 = FontAwesome:style=Regular;0
-#font-1 = FontAwesome:style=Regular;0
-#font-1 = FontAwesome5Free:style=regular:pixelsize=11
 font-0 = fixed:pixelsize=10;1
 font-1 = FontAwesome5Free:style=regular:pixelsize=11;2
 font-2 = FontAwesome5Free:style=solid:pixelsize=11;2
 font-3 = FontAwesome:style=Regular;2
 font-4 = Ionicons:style=Regular;2
-#font-5 = siji:pixelsize=10;1
 
-modules-left = bspwm i3
-modules-center = mpd xwindow
-modules-right = updates wlan eth xbacklight xkeyboard memory cpu fanspeed temperature battery pulseaudio date powermenu
+modules-left = bspwm
+modules-center = xwindow
+modules-right = mpd updates xbacklight xkeyboard wlan eth memory cpu fanspeed temperature pulseaudio battery date powermenu
 
 tray-position = right
 tray-padding = 2
-;tray-background = #0063ff
 
 wm-restack = bspwm
-;wm-restack = i3
 
 ;override-redirect = true
 
@@ -74,30 +68,10 @@ scroll-down = bspwm-deskprev
 cursor-click = pointer
 cursor-scroll = default
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = "%{T3} %{T-} "
-format-prefix-foreground = ${colors.foreground-alt}
-#format-prefix-underline = ${xrdb:color13}
-
-label-layout = %layout%
-#label-layout-underline = ${xrdb:color13}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-#label-indicator-underline = ${xrdb:color13}
-
 [module/bspwm]
 type = internal/bspwm
 
-; Note that the <label> needs to correspond with the bspwm workspace namei
+; Note that the <label> needs to correspond with the bspwm workspace name
 ws-icon-0 = "web;%{T5}%{T-}"
 ws-icon-1 = "code;%{T5}%{T-}"
 ws-icon-2 = "term;%{T5}%{T-}"
@@ -105,7 +79,7 @@ ws-icon-3 = "social;%{T5}%{T-}"
 ws-icon-4 = "movie;%{T5}%{T-}"
 ws-icon-5 = "music;%{T5}%{T-}"
 ws-icon-6 = "prn;%{T5}%{T-}"
-ws-icon-default = %{T5}%{T-}
+ws-icon-default = "%{T5}%{T-}"
 
 format = <label-state> <label-mode>
 
@@ -129,6 +103,10 @@ label-empty-padding = 2
 ; Separator in between workspaces
 ; label-separator = |
 
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
 [module/mpd]
 type = internal/mpd
 format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
@@ -141,6 +119,15 @@ icon-next = 
 
 label-song-maxlen = 25
 label-song-ellipsis = true
+
+[module/updates]
+type = custom/script
+exec = ~/.config/polybar/scripts/check-updates.sh
+interval = 300
+
+format = <label>
+format-prefix = "  "
+format-prefix-foreground = ${colors.foreground-alt}
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -159,50 +146,35 @@ bar-empty = ─
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
 
-[module/updates]
-type = custom/script
-exec = ~/.config/polybar/scripts/check-updates.sh
-interval = 300
-
-format = <label>
-format-prefix = "  "
-format-prefix-foreground = ${colors.foreground-alt}
-
 [module/backlight-acpi]
 inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
 
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-#format-underline = ${xrdb:color4}
-label = %percentage:2%%
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
 
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = " "
+format-prefix = "%{T3} %{T-} "
 format-prefix-foreground = ${colors.foreground-alt}
-#format-underline = ${xrdb:color8}
-label = %percentage_used%%
+
+label-layout = %layout%
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
 
 [module/wlan]
 type = internal/network
-;interface = enp34s0
-interface = wlo1
+interface = wlp3s0
 interval = 3.0
 
 format-connected =  <ramp-signal>
 format-connected-foreground = ${colors.foreground-alt}
-#format-connected-underline = ${xrdb:color9}
 label-connected = %essid%
 
 format-disconnected = DISC
 ;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
@@ -215,7 +187,7 @@ ramp-signal-foreground = ${colors.foreground}
 
 [module/eth]
 type = internal/network
-interface = eno1
+interface = enp0s25
 interval = 3.0
 
 format-connected-underline = #55aa55
@@ -225,32 +197,56 @@ label-connected = %local_ip%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-[module/date]
-type = internal/date
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+label = %percentage_used%%
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+label = %percentage:2%%
+
+[module/fanspeed]
+type = custom/script
+exec = ~/.config/polybar/scripts/fan-speed.sh
 interval = 5
 
-date =
-date-alt = " %Y-%m-%d"
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix = 
+format = <label>
+format-prefix = "  "
 format-prefix-foreground = ${colors.foreground-alt}
-#format-underline = ${xrdb:color12}
 
-label = %date% %time%
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 80
+base-temperature = 30
+
+format = <ramp> <label>
+
+format-warn = <ramp> <label-warn>
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
 format-prefix = asdasd
 format-volume = <ramp-volume> <label-volume>
-#format-volume-underline = ${xrdb:color5}
 format-muted-underline = ${xrdb:color5}
 #label-volume = ${env:PULSEAUDIO_MODULE_LABEL}
 label-volume-foreground = ${root.foreground}
@@ -269,7 +265,6 @@ click-right = pavucontrol &
 [module/battery]
 type = internal/battery
 battery = BAT1
-#adapter = ADP1
 adapter = AC
 full-at = 98
 
@@ -281,7 +276,7 @@ format-discharging = <animation-discharging> <label-discharging>
 
 label-full = 
 #format-full-prefix = " full"
-format-full-prefix-foreground = ${colors.foreground-alt}
+; format-full-prefix-foreground = ${colors.foreground-alt}
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -295,35 +290,21 @@ animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
-[module/fanspeed]
-type = custom/script
-exec = ~/.config/polybar/scripts/fan-speed.sh
+[module/date]
+type = internal/date
 interval = 5
 
-format = <label>
-format-prefix = "  "
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
+#format-underline = ${xrdb:color12}
 
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 80
-base-temperature = 30
-
-format = <ramp> <label>
-#format-underline = ${xrdb:color11}
-
-format-warn = <ramp> <label-warn>
-#format-warn-underline = ${self.format-underline}
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+label = %date% %time%
 
 [module/powermenu]
 type = custom/menu

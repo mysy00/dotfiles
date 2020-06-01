@@ -14,13 +14,15 @@ alias \
 	df="df -h" \
 	yt="youtube-dl --add-metadata -i" \
 	yta="yt -x -f bestaudio/best" \
-	ffmpeg="ffmpeg -hide_banner"
+	ffmpeg="ffmpeg -hide_banner" \
+	sudo="sudo "
 
 # Colorize commands when possible.
 alias \
-	ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
-	diff="diff --color=auto"
+	diff="diff --color=auto" \
+	ls="lsd -h --color always --group-dirs first --icon-theme fancy" \
+	ll="lsd -lhA --color always --group-dirs first --icon-theme fancy"
 
 # These common commands are just too long! Abbreviate them.
 alias \
