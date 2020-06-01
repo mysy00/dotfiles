@@ -14,4 +14,5 @@ setbg &			# set the background with the `setbg` script
 picom &		# xcompmgr for transparency
 dunst &			# dunst for notifications
 xset r rate 500 35 &	# Speed xrate up
+setxkbmap pl		# Set default keyboard layout
 unclutter &		# Remove mouse when idle

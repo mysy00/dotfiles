@@ -138,9 +138,12 @@ super + {Left,Down,Up,Right}
 super + shift + {h,j,k,l}
 	windowgrabber {west,south,north,east}
 
-# Different style of movement: transplant into window in chosen direction
 super + shift + {Left,Down,Up,Right}
-	euclid_mover {west,south,north,east}
+	windowgrabber {west,south,north,east}
+
+# Different style of movement: transplant into window in chosen direction
+#super + shift + {Left,Down,Up,Right}
+#	euclid_mover {west,south,north,east}
 
 #resize windows
 super + ctrl + {h,j,k,l}

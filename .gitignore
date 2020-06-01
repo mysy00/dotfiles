@@ -1,9 +1,7 @@
+.ssh
 .cache
 .local/src/
 .local/share/*
-!.local/share/ranger
-.local/share/ranger/history
 !.local/share/applications
-.config/zsh/plugins/
 .config/nvim/*
 !.config/nvim/init.vim
