@@ -3,6 +3,12 @@ Projects/
 .ssh/
 .cache/
 .pki/
+.gnupg/
+.cargo/
+.electron-gyp/
+.mozilla/
+.bash*
+.Xauthority
 *.log*
 
 .local/src/

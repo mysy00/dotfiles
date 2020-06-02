@@ -206,7 +206,7 @@ super + ctrl + button4
 
 # run applications
 super + space
-	rofi -show
+	rofi -show run
 
 super + shift + Return
 	$TERMINAL
