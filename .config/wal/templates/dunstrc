@@ -7,10 +7,10 @@
     transparency = 20
     notification_height = 0
     separator_height = 2
-    padding = 0
-    horizontal_padding = 8
-    frame_width = 3
-    frame_color = "{color4}"
+    padding = 16
+    horizontal_padding = 12
+    frame_width = 2
+    frame_color = "{color13}"
 
     # Define a color for the separator.
     # possible values are:
@@ -53,8 +53,8 @@
     #icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/:/usr/share/icons/Adwaita/256x256/status/
     sticky_history = yes
     history_length = 20
-    dmenu = /usr/bin/dmenu -p dunst:
-    browser = /usr/bin/firefox -new-tab
+    dmenu = /usr/bin/rofi -dmenu -p dunst:
+    browser = /usr/bin/brave
 
     # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true

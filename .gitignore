@@ -1,12 +1,18 @@
 Downloads/
 Projects/
+ujk/
+
+# if anyone knows how to put them in the correct directory,
+# please let me know... Some of them got "wont fix" label.
 .ssh/
 .cache/
 .pki/
 .gnupg/
+.gnome/
 .cargo/
 .electron-gyp/
 .mozilla/
+.yarn/
 .bash*
 .Xauthority
 *.log*

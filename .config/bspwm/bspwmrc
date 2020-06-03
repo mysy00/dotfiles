@@ -3,6 +3,7 @@ export gap=10
 export PANEL_HEIGHT=25
 
 ## Colors, gaps
+[[ -f "${HOME}/.cache/wal/colors.sh" ]] || setbg
 . "${HOME}/.cache/wal/colors.sh"
 
 bspc config window_gap $gap;

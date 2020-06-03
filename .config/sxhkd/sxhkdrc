@@ -208,6 +208,9 @@ super + ctrl + button4
 super + space
 	rofi -show run
 
+super + shift + period
+	rofimoji
+
 super + shift + Return
 	$TERMINAL
 
