@@ -28,6 +28,7 @@ ujk/
 !.config/nvim/init.vim
 !.config/alacritty
 !.config/bspwm/
+!.config/espanso/
 !.config/dunst/
 !.config/fontconfig/
 !.config/gtk-3.0/

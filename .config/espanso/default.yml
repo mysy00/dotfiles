@@ -1,0 +1,95 @@
+# espanso configuration file
+
+# This is the default configuration file, change it as you like it
+# You can refer to the official documentation:
+# https://espanso.org/docs/
+
+# Matches are the substitution rules, when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hi there!"
+
+  # Dates
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%m/%d/%Y"
+
+  # Shell commands
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo Hello from your shell"
+  - trigger: ":lenny:"
+    replace: "( ͡° ͜ʖ ͡°)"
+
+  - trigger: ":shrug:"
+    replace: "¯\_(ツ)\_/¯"
+
+  - trigger: ":shrugw:"
+    replace: "¯\\\_(ツ)\_/¯"
+
+  - trigger: ":sad:"
+    replace: "( ͡° ʖ̯ ͡°)"
+
+  - trigger: ":sad1:"
+    replace: "(｡•́︿•̀｡)"
+
+  - trigger: ":sad2:"
+    replace: "(ಥ﹏ಥ)"
+
+  - trigger: ":shocked:"
+    replace: "( ಠ_ಠ)"
+
+  - trigger: ":tableflip:"
+    replace: "(╯°□°）╯︵ ┻━┻"
+
+  - trigger: ":tableback:"
+    replace: "┬─┬ノ(º_ºノ)"
+
+  - trigger: ":ghost:"
+    replace: "ᶘᵒᴥᵒᶅ"
+
+  - trigger: ":cute:"
+    replace: "(｡◕‿‿◕｡)"
+
+  - trigger: ":bear:"
+    replace: "ʕ•ᴥ•ʔ"
+
+  - trigger: ":excited:"
+    replace: "(ʘ‿ʘ)"
+
+  - trigger: ":blink:"
+    replace: "( ͡~ ͜ʖ ͡°)"
+
+  - trigger: ":happy:"
+    replace: "ヽ(・∀・)ﾉ"
+
+  - trigger: ":happy1:"
+    replace: "(*°▽°*)"
+
+  - trigger: ":happy2:"
+    replace: "＼(＾▽＾)／"
+
+  - trigger: ":love:"
+    replace: "ヽ(♡‿♡)ノ"
+
+  - trigger: ":love1:"
+    replace: "( ´ ∀ `)ノ～ ♡"
+
+  - trigger: ":love2:"
+    replace: "(っ˘з(˘⌣˘ ) ♡"
+
+  - trigger: ":dead:"
+    replace: "(×_×)"
+
+  - trigger: ":bearangry:"
+    replace: "ʕ •̀ o •́ ʔ"
