@@ -10,8 +10,8 @@ super + shift + r
 
 # Show keybindings
 super + F1
-	$TERMINAL -e keybindings.sh
-
+	keybindings
+#	$TERMINAL -e keybindings
 
 #
 # Window manipulation
@@ -48,7 +48,7 @@ super + o
 	bspc node -g private
 
 # Make window sticky
-super + i
+super + s
 	bspc node -g sticky
 
 # Lock a window from closing
@@ -83,16 +83,6 @@ alt + ctrl + {h,j,k,l}
 alt + ctrl + {Left,Down,Up,Right}
 	bspc node -p \~{west,south,north,east}
 
-# Presel the desktop for splitting in certain direction
-# alt + shift + {a,s,w,d}
-	# bspc node @/ -p \~{west,south,north,east}
-#
-# alt + shift + {h,j,k,l}
-	# bspc node @/ -p \~{west,south,north,east}
-
-# alt + shift + {Left,Down,Up,Right}
-	# bspc node @/ -p \~{west,south,north,east}
-
 # Set splitting ratio of windows
 #alt + ctrl + {1-9}
 #	bspc node -o 0.{1-9}
@@ -108,7 +98,7 @@ super + {_,shift + }{1-9,0}
 ## xmonad style desktops. You have 10 desktops shared between all monitors,
 ## and focusing a desktop focuses it on the currently focused monitor
 #super + {1-9,0}
-#	summondesktop.sh {1-9,10}
+#	summondesktop {1-9,10}
 #super + shift + {1-9,0}
 #	bspc node -d ^{1-9,10}
 
@@ -122,7 +112,7 @@ alt + {_,shift + }Tab
 
 # Go to specific window
 super + Tab
-	WindowSelector
+	rofi -show window
 
 #Focus windows by direction, works with multihead
 super + {h,j,k,l}
@@ -147,10 +137,10 @@ super + shift + {Left,Down,Up,Right}
 
 #resize windows
 super + ctrl + {h,j,k,l}
-	bspwm_resize.sh {west,south,north,east}
+	windowresize {west,south,north,east}
 
 super + ctrl + {Left,Down,Up,Right}
-	bspwm_resize.sh {west,south,north,east}
+	windowresize {west,south,north,east}
 
 #
 # Layout manipulation/desktop level controls
@@ -160,7 +150,8 @@ super + ctrl + {Left,Down,Up,Right}
 super + f
 	bspc desktop -l next
 
-# Balance treesuper + b
+# Balance tree
+super + b
 	bspc node @/ -B
 
 # Balance brother node. If you do this on biggest window of the desktop, it usually means balancing all windows with except the biggest.
@@ -173,7 +164,7 @@ super + ctrl + b
 
 # Toggle automatic balancing of windows
 alt + b
-	euclid_balancer
+	euclidbalancer
 
 # Mirror and flip leaves of tree
 super + {n,m}
@@ -189,16 +180,9 @@ super + shift + {n,m}
 
 # Switch workspace by scrolling on the desktop. Causes scrolling issues on some systems.
 ~button4
-	DidIClickDesktop.sh && bspc desktop -f next
+	DidIClickDesktop && bspc desktop -f next
 ~button5
-	DidIClickDesktop.sh && bspc desktop -f prev
-
-### Add or remove desktops by scrolling
-super + ctrl + button5
-    bspcp dsktp rm
-
-super + ctrl + button4
-    bspcp dsktp add
+	DidIClickDesktop && bspc desktop -f prev
 
 #
 # spawn programs
@@ -208,19 +192,11 @@ super + ctrl + button4
 super + space
 	rofi -show run
 
-super + shift + period
+super + shift + greater
 	rofimoji
 
 super + shift + Return
 	$TERMINAL
-
-#super + z
-#	default-terminal
-super + z
-	/usr/bin/alacritty
-
-super + r
-	rofi-finder.sh
 
 super + shift + b
 	$BROWSER
@@ -235,7 +211,7 @@ super + shift + e
 	thunar
 
 Print
-	maim
+	prettyscreenshot
 
 alt + shift + 3
 	maim | xclip -selection  clipboard  -t image/png

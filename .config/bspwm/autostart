@@ -3,7 +3,6 @@
 
 ## Load appearance settings
 xsetroot -cursor_name left_ptr &
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0" &
 xrdb merge .Xresources &
 
 ## Reduces flicker. Disabling saves resources.
@@ -36,8 +35,7 @@ xcape -e 'Super_L=Super_L|Shift_L|space' &
 ## Gnome keyring
 gnome-keyring-daemon &
 thunar --daemon &
-/usr/lib/mate-notification-daemon/mate-notification-daemon &
 
 ## Custom Scripts
-setbg ~/.local/wallpapers/
+setbg ~/Pictures/Wallpapers/
 launchpolybar &
