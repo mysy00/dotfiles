@@ -1,4 +1,6 @@
 Downloads/
+Pictures/
+Videos/
 Projects/
 ujk/
 
@@ -13,6 +15,7 @@ ujk/
 .electron-gyp/
 .mozilla/
 .yarn/
+.vscode/
 .bash*
 .Xauthority
 *.log*

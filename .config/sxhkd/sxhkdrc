@@ -1,47 +1,19 @@
-﻿# bspwm hotkeys
-#
-# Cleanly quit bspwm
-super + shift + q
-	bspc quit 1 && killall polybar
-
-# Restart bspwm
-super + shift + r
-	bspc wm -r
-
-# Show keybindings
+﻿# Show keybindings
 super + F1
 	keybindings
 #	$TERMINAL -e keybindings
 
-#
-# Window manipulation
-# ___________________
+# Run rofi run
+super + space
+	rofi -show run
 
 # Close window
 super + x
-	bspc  node -c
+	bspc node -c
 
-# Kill window
-super + shift + x
-	bspc  node -k
-
-# Toggle tiling mode of window
-super + shift + t
-	bspc node -t {pseudo_tiled,tiled}
+# Switch floating state on a window
 super + t
 	{bspc node -t floating && window-placer $(bspc query -T -d | grep -o '"state":"floating"' | wc -l),bspc node -t tiled}
-
-# Force all windows of the desktop to tile
-super + ctrl + t
-	bspcp tile
-
-# Force all windows of the desktop to float and arrange them
-super + ctrl + shift + t
-	bspcp float
-
-# Toggle fullscreen
-super + shift + f
-	bspc node -t {fullscreen,tiled}
 
 # Try to keep size and position of the selected window
 super + o
@@ -51,64 +23,21 @@ super + o
 super + s
 	bspc node -g sticky
 
+# Make window master or  move to preselected area
+super + Return
+    windowpromoter
+
 # Lock a window from closing
 super + Escape
 	bspc node -g locked
 
-### Map or unmap windows (functional equivalent of "minimize")
-super + shift + c
-    whid dmenu
-
+# Hide a window
 super + c
     whid hide
-
-super + ctrl + c
-    whid last
-
-#
-# Window moving and splitting
-# ___________________________
-
-# Autopresel (split window in its largest dimension)
- ctrl + space
-	auto-presel
-
-# Presel window for splitting in certain direction
-alt + ctrl + {a,s,w,d}
-	bspc node -p \~{west,south,north,east} -i
-
-alt + ctrl + {h,j,k,l}
-	bspc node -p \~{west,south,north,east}
-
-alt + ctrl + {Left,Down,Up,Right}
-	bspc node -p \~{west,south,north,east}
-
-# Set splitting ratio of windows
-#alt + ctrl + {1-9}
-#	bspc node -o 0.{1-9}
-
-# Move current window to largest space or preselected area if there is one.
-super + Return
-    windowpromoter
-
-# go (Shift=move) to desktop (and focus the monitor that the desktop is located on. Bspwm style)
-super + {_,shift + }{1-9,0}
-    bspc {desktop -f,node -d} ^{1-9,10}
-
-## xmonad style desktops. You have 10 desktops shared between all monitors,
-## and focusing a desktop focuses it on the currently focused monitor
-#super + {1-9,0}
-#	summondesktop {1-9,10}
-#super + shift + {1-9,0}
-#	bspc node -d ^{1-9,10}
 
 # Select previous / next desktop
 super + {comma,period}
 	bspc desktop -f {prev.occupied,next.occupied}
-
-# cycle windows
-alt + {_,shift + }Tab
-    bspc node -f {next,prev}
 
 # Go to specific window
 super + Tab
@@ -121,30 +50,9 @@ super + {h,j,k,l}
 super + {Left,Down,Up,Right}
     focusmover {west,south,north,east}
 
-# Move tiled windows. Moving a tiled window to
-# preselected one moves into preselection instead.
-# Moving out of the screen should move the window to next monitor if possible
-
-super + shift + {h,j,k,l}
-	windowgrabber {west,south,north,east}
-
-super + shift + {Left,Down,Up,Right}
-	windowgrabber {west,south,north,east}
-
-# Different style of movement: transplant into window in chosen direction
-#super + shift + {Left,Down,Up,Right}
-#	euclid_mover {west,south,north,east}
-
-#resize windows
-super + ctrl + {h,j,k,l}
-	windowresize {west,south,north,east}
-
-super + ctrl + {Left,Down,Up,Right}
-	windowresize {west,south,north,east}
-
-#
-# Layout manipulation/desktop level controls
-# ______________
+# Mirror and flip leaves of tree
+super + {n,m}
+	bspc node @/ -F {horizontal,vertical}
 
 # Toggle monocle mode
 super + f
@@ -154,29 +62,204 @@ super + f
 super + b
 	bspc node @/ -B
 
-# Balance brother node. If you do this on biggest window of the desktop, it usually means balancing all windows with except the biggest.
-super + alt + b
-	bspc node @brother -B
+# Mute song
+super + m
+	playerctl play-pause
 
-# Undo balancing (equalize windows)
-super + ctrl + b
-	bspc node @/ -E
+# Previous song
+super + F9
+	playerctl previous
 
-# Toggle automatic balancing of windows
-alt + b
-	euclidbalancer
+# Next song
+super + F10
+	playerctl next
 
-# Mirror and flip leaves of tree
-super + {n,m}
-	bspc node @/ -F {horizontal,vertical}
+# Volume down by 5
+super + F11
+	amixer -D pulse sset Master 5%-
+
+# Volume up by 5
+super + F12
+	amixer -D pulse sset Master 5%+
+
+# Remove receptacles
+super + BackSpace
+	for i in $(bspc query -N -n .leaf.!window.local); do bspc node $i -k; done
+
+# Switch Desktop
+super + {1-9,0}
+	bspc desktop -f ^{1-9,10}
+
+# #######
+# super + shift
+# #######
+
+# Cleanly quit bspwm
+super + shift + q
+	bspc quit 1 && killall polybar
+
+# Restart bspwm
+super + shift + r
+	bspc wm -r
+
+# Kill window
+super + shift + x
+	bspc node -k
+
+# Toggle tiling mode of window
+super + shift + t
+	bspc node -t {pseudo_tiled,tiled}
+
+# Toggle fullscreen
+super + shift + f
+	bspc node -t {fullscreen,tiled}
+
+# Unhide windows
+super + shift + c
+    whid dmenu
+
+# Emoji picker
+super + shift + greater
+	rofimoji
+
+# Open terminal
+super + shift + Return
+	$TERMINAL
+
+# Open web browser
+super + shift + b
+	$BROWSER
+
+# Open Discord
+super + shift + d
+	discord
+
+# Open Firefox
+super + shift + p
+	firefox
+
+# Open Thunar
+super + shift + e
+	thunar
+
+# Move window
+super + shift + {h,j,k,l}
+	windowgrabber {west,south,north,east}
+
+super + shift + {Left,Down,Up,Right}
+	windowgrabber {west,south,north,east}
+
+# Reload sxhkd configuration file
+super + shift + Escape
+	pkill -USR1 -x sxhkd
+
+# In case bspwmrc fails to execute/you have plugged-in a new monitor
+super + shift + r
+	bspwmrc
+	
+# Move window to another desktop
+super + shift + {1-9,0}
+    bspc node -d ^{1-9,10}
 
 # Rotate leaves of tree
 super + shift + {n,m}
 	bspc node @/ -R {90,270}
 
-#
-# Mouse bindings
-# __________________
+# #######
+# super + ctrl
+# #######
+
+# Force all windows of the desktop to tile
+super + ctrl + t
+	bspcp tile
+
+# Unhide last hidden window
+super + ctrl + c
+    whid last
+
+# Resize windows
+super + ctrl + {h,j,k,l}
+	windowresize {west,south,north,east}
+
+super + ctrl + {Left,Down,Up,Right}
+	windowresize {west,south,north,east}
+
+# Undo balancing (equalize windows)
+super + ctrl + b
+	bspc node @/ -E
+
+# Toggle compositing
+super + ctrl + space
+	{pkill picom ,\
+	picom -b }
+
+# #######
+# super + ctrl + shift
+# #######
+
+# Force all windows of the desktop to float and arrange them
+super + ctrl + shift + t
+	bspcp float
+
+# Resize Window
+super + ctrl + shift + {h,j,k,l}
+	bspc node -p \~{west,south,north,east}
+
+super + ctrl + shift + {Left,Down,Up,Right}
+	bspc node -p \~{west,south,north,east}
+
+# #######
+# super + alt
+# #######
+
+# Balance brother node. If you do this on biggest window of the desktop, it usually means balancing all windows with except the biggest.
+super + alt + b
+	bspc node @brother -B
+
+# #######
+# ctrl
+# #######
+
+# Split window in its largest dimension
+ctrl + space
+	auto-presel
+
+# #######
+# alt
+# #######
+
+# Toggle automatic balancing of windows
+alt + b
+	euclidbalancer
+
+# #######
+# alt + ctrl
+# #######
+
+# Presel window for splitting in certain direction
+alt + ctrl + {a,s,w,d}
+	bspc node -p \~{west,south,north,east} -i
+
+# #######
+# alt + shift
+# #######
+
+# Take full-size screenshot and copy it to the clipboard
+alt + shift + 3
+	maim | xclip -selection  clipboard  -t image/png
+
+# Take screenshot of a section and copy it to the clipboard
+alt + shift + 4
+	maim -s | xclip -selection  clipboard  -t image/png
+
+# #######
+# other
+# #######
+
+# cycle windows
+alt + {_,shift + }Tab
+    bspc node -f {next,prev}
+
 
 # Switch workspace by scrolling on the desktop. Causes scrolling issues on some systems.
 ~button4
@@ -184,58 +267,9 @@ super + shift + {n,m}
 ~button5
 	DidIClickDesktop && bspc desktop -f prev
 
-#
-# spawn programs
-#
-
-# run applications
-super + space
-	rofi -show run
-
-super + shift + greater
-	rofimoji
-
-super + shift + Return
-	$TERMINAL
-
-super + shift + b
-	$BROWSER
-
-super + shift + d
-	discord
-
-super + shift + p
-	firefox
-
-super + shift + e
-	thunar
-
+# Take a pretty screenshot of focused window
 Print
 	prettyscreenshot
-
-alt + shift + 3
-	maim | xclip -selection  clipboard  -t image/png
-
-alt + shift + 4
-	maim -s | xclip -selection  clipboard  -t image/png
-
-#
-# Media keys
-# __________
-super + m
-	playerctl play-pause
-
-super + F9
-	playerctl previous
-
-super + F10
-	playerctl next
-
-super + F11
-	amixer -D pulse sset Master 5%-
-
-super + F12
-	amixer -D pulse sset Master 5%+
 
 XF86AudioRaiseVolume
 	volume up
@@ -255,19 +289,10 @@ XF86MonBrightnessUp
 XF86Sleep
 	systemctl suspend
 
-# make sxhkd reload its configuration files:
-super + shift + Escape
-	pkill -USR1 -x sxhkd
 
-# In case bspwmrc fails to execute/you have plugged-in a new monitor
-super + shift + r
-	bspwmrc
-
-# Toggle compositing
-super + ctrl + space
-	{pkill picom ,\
-	picom -b }
-
-# Remove receptacles
-super + BackSpace
-  for i in $(bspc query -N -n .leaf.!window.local); do bspc node $i -k; done
+## xmonad style desktops. You have 10 desktops shared between all monitors,
+## and focusing a desktop focuses it on the currently focused monitor
+#super + {1-9,0}
+#	summondesktop {1-9,10}
+#super + shift + {1-9,0}
+#	bspc node -d ^{1-9,10}
