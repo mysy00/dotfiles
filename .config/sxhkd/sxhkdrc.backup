@@ -7,37 +7,29 @@ super + F1
 super + space
 	rofi -show run
 
-# Emoji picker
-super + period
-	rofimoji
-
-# Open terminal
-super + Return
-	$TERMINAL
-
-# Open the main editor
-super + e
-	$EDITOR
-
-# Open web browser
-super + b
-	$BROWSER
-
-# Open Firefox
-super + p
-	firefox
-
-# Open Discord
-super + d
-	discord
-
-# Open Thunar
-super + f
-	thunar
-
 # Close window
 super + x
 	bspc node -c
+
+# Switch floating state on a window
+super + t
+	{bspc node -t floating && window-placer $(bspc query -T -d | grep -o '"state":"floating"' | wc -l),bspc node -t tiled}
+
+# Try to keep size and position of the selected window
+super + o
+	bspc node -g private
+
+# Make window sticky
+super + s
+	bspc node -g sticky
+
+# Make window master or  move to preselected area
+super + Return
+    windowpromoter
+
+# Lock a window from closing
+super + Escape
+	bspc node -g locked
 
 # Hide a window
 super + c
@@ -51,12 +43,24 @@ super + {comma,period}
 super + Tab
 	rofi -show window
 
-# Focus windows by direction, works with multihead
+#Focus windows by direction, works with multihead
 super + {h,j,k,l}
     focusmover {west,south,north,east}
 
 super + {Left,Down,Up,Right}
     focusmover {west,south,north,east}
+
+# Mirror and flip leaves of tree
+super + {n,m}
+	bspc node @/ -F {horizontal,vertical}
+
+# Toggle monocle mode
+super + f
+	bspc desktop -l next
+
+# Balance tree
+super + b
+	bspc node @/ -B
 
 # Mute song
 super + m
@@ -78,6 +82,10 @@ super + F11
 super + F12
 	amixer -D pulse sset Master 5%+
 
+# Remove receptacles
+super + BackSpace
+	for i in $(bspc query -N -n .leaf.!window.local); do bspc node $i -k; done
+
 # Switch Desktop
 super + {1-9,0}
 	bspc desktop -f ^{1-9,10}
@@ -90,29 +98,33 @@ super + {1-9,0}
 super + shift + x
 	bspc node -k
 
-# Remove receptacles
-super + shift + BackSpace
-	for i in $(bspc query -N -n .leaf.!window.local); do bspc node $i -k; done
+# Emoji picker
+super + shift + greater
+	rofimoji
 
-# Try to keep size and position of the selected window
-super + shift + l
-	bspc node -g private
-
-# Switch floating state on a window
-super + shift + t
-	{bspc node -t floating && window-placer $(bspc query -T -d | grep -o '"state":"floating"' | wc -l),bspc node -t tiled}
-
-# Make window sticky
-super + shift + s
-	bspc node -g sticky
-
-# Lock a window from closing
-super + shift + Escape
-	bspc node -g locked
-
-# Make window master or  move to preselected area
+# Open terminal
 super + shift + Return
-    windowpromoter
+	$TERMINAL
+
+# Open the main editor
+super + shift + e
+	$EDITOR
+
+# Open web browser
+super + shift + b
+	$BROWSER
+
+# Open Firefox
+super + shift + p
+	firefox
+
+# Open Discord
+super + shift + d
+	discord
+
+# Open Thunar
+super + shift + f
+	thunar
 
 # Move window
 super + shift + {h,j,k,l}
@@ -121,33 +133,21 @@ super + shift + {h,j,k,l}
 super + shift + {Left,Down,Up,Right}
 	windowgrabber {west,south,north,east}
 
+# Reload sxhkd configuration file
+super + shift + Escape
+	pkill -USR1 -x sxhkd
+
+# In case bspwmrc fails to execute/you have plugged-in a new monitor
+super + shift + r
+	bspwmrc
+
 # Move window to another desktop
 super + shift + {1-9,0}
     bspc node -d ^{1-9,10}
 
-# Toggle monocle mode
-super + shift + m
-	bspc desktop -l next
-
-# Toggle tiling mode of window - ratio fix
-super + shift + r
-	bspc   node -t {pseudo_tiled,tiled}
-
-# Toggle fullscreen
-super + shift + f
-	bspc node -t {fullscreen,tiled}
-
-# Balance tree
-super + shift + b
-	bspc node @/ -B
-
 # Rotate leaves of tree
-super + shift + {colon,quotedbl}
+super + shift + {n,m}
 	bspc node @/ -R {90,270}
-
-# Mirror and flip leaves of tree
-super + shift + {less,greater}
-	bspc node @/ -F {horizontal,vertical}
 
 # #######
 # super + ctrl
@@ -161,13 +161,13 @@ super + ctrl + q
 super + ctrl + r
 	bspc wm -r
 
-# Reload sxhkd configuration file
-super + ctrl + Escape
-	pkill -USR1 -x sxhkd
+# Toggle tiling mode of window
+super + ctrl + t
+	bspc   node -t {pseudo_tiled,tiled}
 
-# In case bspwmrc fails to execute/you have plugged-in a new monitor
-super + ctrl + r
-	bspwmrc
+# Toggle fullscreen
+super + ctrl + f
+	bspc node -t {fullscreen,tiled}
 
 # Unhide windows
 super + ctrl + u

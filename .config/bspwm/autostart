@@ -1,13 +1,6 @@
 ##run_once is a script in /usr/bin that prevents running script if it is running already
 ##
 
-## Load appearance settings
-xsetroot -cursor_name left_ptr &
-xrdb merge .Xresources &
-
-## Reduces flicker. Disabling saves resources.
-picom -b &
-
 ## enable local fonts in .fonts directory
 xset +fp /usr/share/fonts/local &
 xset +fp /usr/share/fonts/misc &
@@ -32,10 +25,6 @@ eval $(awk -F'=' '/Exec=/ {print $2}' ~/.config/autostart/lxrandr-autostart.desk
 ## Map super key to trigger rofi when used alone
 xcape -e 'Super_L=Super_L|Shift_L|space' &
 
-## Gnome keyring
-gnome-keyring-daemon &
-thunar --daemon &
-
 ## Custom Scripts
-setbg ~/Pictures/Wallpapers/
+# setbg ~/Pictures/Wallpapers/ &
 launchpolybar &

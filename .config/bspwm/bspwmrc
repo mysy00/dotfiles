@@ -91,5 +91,5 @@ bspc config external_rules_command /usr/bin/pseudo_automatic_mode
 #bspc config external_rules_command /usr/bin/adjust-new-window
 
 ## Autostart apps
-#sxhkd &
-#. $HOME/.config/ bspwm/autostart
+sxhkd &
+. $HOME/.config/bspwm/autostart

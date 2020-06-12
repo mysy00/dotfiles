@@ -27,7 +27,7 @@ background-alt = ${colors.primary}
 foreground = ${xrdb:color2137:#fff}
 foreground-alt = ${xrdb:color3:#555}
 
-[bar/example]
+[bar/default]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 27
@@ -163,6 +163,12 @@ label-layout = %layout%
 label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
+
+[module/bluetooth]
+type = custom/script
+exec = rofi-bluetooth --status
+interval = 1
+click-left = rofi-bluetooth &
 
 [module/wlan]
 type = internal/network
