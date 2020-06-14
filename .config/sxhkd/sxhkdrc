@@ -19,6 +19,9 @@ super + Return
 super + e
 	$EDITOR
 
+super + c
+	code
+
 # Open web browser
 super + b
 	$BROWSER
@@ -38,10 +41,6 @@ super + f
 # Close window
 super + x
 	bspc node -c
-
-# Hide a window
-super + c
-    whid hide
 
 # Select previous / next desktop
 super + {comma,period}
@@ -168,6 +167,10 @@ super + ctrl + Escape
 # In case bspwmrc fails to execute/you have plugged-in a new monitor
 super + ctrl + r
 	bspwmrc
+
+# Hide a window
+super + ctrl + c
+    whid hide
 
 # Unhide windows
 super + ctrl + u
