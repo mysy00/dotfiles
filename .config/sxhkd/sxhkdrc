@@ -5,7 +5,7 @@ super + F1
 
 # Run rofi run
 super + space
-	rofi -show run
+	rofi -show drun
 
 # Emoji picker
 super + period

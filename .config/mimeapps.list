@@ -4,6 +4,7 @@
 # These .desktop entries can also be seen and changed in ~/.local/share/applications/
 
 text/x-shellscript=text.desktop;
+text/html=browser.desktop;
 x-scheme-handler/magnet=torrent.desktop;
 application/x-bittorrent=torrent.desktop;
 text/plain=text.desktop;

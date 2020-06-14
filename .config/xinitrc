@@ -14,5 +14,4 @@
 # run the proper command to run when the graphical environment starts.
 
 sxhkd &
-polybar example &
 exec bspwm

@@ -6,9 +6,9 @@
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')"
 
 # Default programs:
-export EDITOR="code"
+export EDITOR="nvim"
 export TERMINAL="alacritty"
-export BROWSER="brave"
+export BROWSER="google-chrome-stable"
 export READER="zathura"
 
 # ~/ Clean-up:
