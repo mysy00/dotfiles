@@ -1,4 +1,5 @@
 Downloads/
+Documents/
 Pictures/
 Videos/
 Projects/
@@ -15,8 +16,12 @@ ujk/
 .electron-gyp/
 .mozilla/
 .yarn/
+.npm/
 .vscode/
+.var/ # flatpak
+snap/
 .bash*
+.gitconfig
 .Xauthority
 *.log*
 

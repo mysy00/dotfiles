@@ -34,8 +34,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 10
-    y: 5
+    x: 5
+    y: 2
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -135,7 +135,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 8.0
+  size: 7.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -550,7 +550,7 @@ shell:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # at once.
-#key_bindings:
+key_bindings:
   #- { key: Paste,                                action: Paste          }
   #- { key: Copy,                                 action: Copy           }
   #- { key: L,         mods: Control,             action: ClearLogNotice }
@@ -558,7 +558,9 @@ shell:
   #- { key: PageUp,    mods: Shift,   mode: ~Alt, action: ScrollPageUp,  }
   #- { key: PageDown,  mods: Shift,   mode: ~Alt, action: ScrollPageDown }
   #- { key: Home,      mods: Shift,   mode: ~Alt, action: ScrollToTop,   }
-  #- { key: End,       mods: Shift,   mode: ~Alt, action: ScrollToBottom }
+  #- { key: End,       mods: Shift,   mode: ~Alt, action: ScrollToBottom,}
+  - { key: Y,          mods: Control, mode: ~Alt, action: ScrollLineUp   }
+  - { key: E,          mods: Control, mode: ~Alt, action: ScrollLineDown }
 
   # Vi Mode
   #- { key: Space,  mods: Shift|Control, mode: Vi, action: ScrollToBottom          }

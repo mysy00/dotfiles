@@ -1,13 +1,12 @@
 #!/bin/zsh
 
-filename="/tmp/check-updates.txt"
+filename="/tmp/check-updates-aur.txt"
 
-if ! updates_arch=$(checkupdates > ${filename} | wc -l); then
-    updates_arch=0
+if ! updates_aur=$(yay -Qu --aur > ${filename} | wc -l); then
+    updates_aur=0
 fi
 
-echo "$updates_arch"
-
+echo "$updates_aur"
 
 notify() {
     [[ -s ${filename} ]] && notify-send "Updates Available" "$(cat ${filename})"

@@ -38,6 +38,10 @@ super + d
 super + f
 	thunar
 
+# Open Bluetooth manager
+super + t
+	rofi-bluetooth
+
 # Close window
 super + x
 	bspc node -c
@@ -94,7 +98,7 @@ super + shift + BackSpace
 	for i in $(bspc query -N -n .leaf.!window.local); do bspc node $i -k; done
 
 # Try to keep size and position of the selected window
-super + shift + l
+super + shift + p
 	bspc node -g private
 
 # Switch floating state on a window
@@ -128,7 +132,7 @@ super + shift + {1-9,0}
 super + shift + m
 	bspc desktop -l next
 
-# Toggle tiling mode of window - ratio fix
+# Toggle pseudo tiling mode of a window - ratio fix
 super + shift + r
 	bspc   node -t {pseudo_tiled,tiled}
 
@@ -165,7 +169,7 @@ super + ctrl + Escape
 	pkill -USR1 -x sxhkd
 
 # In case bspwmrc fails to execute/you have plugged-in a new monitor
-super + ctrl + r
+super + ctrl + f
 	bspwmrc
 
 # Hide a window
@@ -173,11 +177,11 @@ super + ctrl + c
     whid hide
 
 # Unhide windows
-super + ctrl + u
+super + ctrl + z
     whid dmenu
 
 # Unhide last hidden window
-super + ctrl + l
+super + ctrl + x
     whid last
 
 # Resize windows
