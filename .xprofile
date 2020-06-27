@@ -32,7 +32,9 @@ xset s noblank &
 xset s noexpose &
 xset c on &
 xset -dpms &
-xbacklight -set 15 &
+xbacklight -set 55 &
+
+launch_polybar
 
 ## Make monitor settings persist between reboots
 eval $(awk -F'=' '/Exec=/ {print $2}' ~/.config/autostart/lxrandr-autostart.desktop) &
@@ -42,4 +44,3 @@ xcape -e 'Super_L=Super_L|Shift_L|space' &
 
 ## Custom Scripts
 # setbg ~/Pictures/Wallpapers/ &
-launchpolybar

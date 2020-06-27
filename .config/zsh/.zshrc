@@ -83,24 +83,24 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 # Load NVM
-function _install_nvm() {
-  unset -f nvm npm node
-  # Set up "nvm" could use "--no-use" to defer setup, but we are here to use it
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This sets up nvm
-  "$@"
-}
-
-function nvm() {
-    _install_nvm nvm "$@"
-}
-
-function npm() {
-    _install_nvm npm "$@"
-}
-
-function node() {
-    _install_nvm node "$@"
-}
+#function _install_nvm() {
+#  unset -f nvm npm node
+#  # Set up "nvm" could use "--no-use" to defer setup, but we are here to use it
+#  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This sets up nvm
+#  "$@"
+#}
+#
+#function nvm() {
+#    _install_nvm nvm "$@"
+#}
+#
+#function npm() {
+#    _install_nvm npm "$@"
+#}
+#
+#function node() {
+#    _install_nvm node "$@"
+#}
 
 # Load syntax highlighting.
 source "/usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"

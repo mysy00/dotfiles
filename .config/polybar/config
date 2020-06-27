@@ -51,9 +51,8 @@ font-2 = FontAwesome5Free:style=solid:pixelsize=11;2
 font-3 = FontAwesome:style=Regular;2
 font-4 = Ionicons:style=Regular;2
 
-modules-left = bspwm
-modules-center = xwindow
-modules-right = mpd updates updatesaur xbacklight xkeyboard wlan eth memory cpu fanspeed temperature pulseaudio battery date
+modules-left = bspwm xwindow
+modules-right = mpd updates updatesaur xbacklight xkeyboard bluetooth wlan eth memory cpu fanspeed temperature pulseaudio battery date
 
 tray-position = right
 tray-padding = 2
@@ -122,8 +121,9 @@ label-song-ellipsis = true
 
 [module/updates]
 type = custom/script
-exec = ~/.config/polybar/scripts/check-updates.sh
-interval = 300
+exec = checkup -r "arch" -fc
+click-left = checkup -r "arch" -n
+interval = 3600
 
 format = <label>
 format-prefix = " "
@@ -131,21 +131,22 @@ format-prefix-foreground = ${colors.foreground-alt}
 
 [module/updatesaur]
 type = custom/script
-exec = ~/.config/polybar/scripts/check-updates-aur.sh
-click-left = "~/.config/polybar/scripts/check-updates-aur.sh --notify"
-interval = 300
+#exec = checkup -r "aur" -fc
+#click-left = "checkup -r "aur" -n
+#interval = 3600
 
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+#format = <label>
+#format-prefix = " "
+#format-prefix-foreground = ${colors.foreground-alt}
 
 [module/xbacklight]
 type = internal/xbacklight
 
 format = <label> <bar>
-label = BL
+label = 
+label-foreground = ${colors.foreground-alt}
 
-bar-width = 10
+bar-width = 5
 bar-indicator = |
 bar-indicator-foreground = #fff
 bar-indicator-font = 2
