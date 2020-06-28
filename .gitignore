@@ -24,10 +24,12 @@ snap/
 .gitconfig
 .Xauthority
 *.log*
+.dotfiles
 
 .local/src/
 .local/share/*
 !.local/share/applications
+.local/share/applications/mimeinfo.cache
 
 .config/*
 !.config/nvim/init.vim
@@ -41,6 +43,7 @@ snap/
 !.config/ncmpcpp/
 !.config/polybar/
 !.config/ranger/
+!.config/rofi/
 !.config/starship/
 !.config/sxhkd/
 !.config/sxiv/
