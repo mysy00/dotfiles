@@ -44,11 +44,9 @@ def refresh_database(updates_log, repo):
         with open(updates_log, "w") as logfile:
             subprocess.call(["yay", "-Syy"], stdout=logfile, shell=False)
 
+
 def count_updates(updates_log):
-    with open(updates_log) as f:
-        for i, l in enumerate(f):
-            pass
-    return i + 1
+    return sum(1 for line in open(updates_log))
 
 
 def show_help():

@@ -34,7 +34,7 @@ xset c on &
 xset -dpms &
 xbacklight -set 55 &
 
-launch_polybar
+launch_polybar &
 
 ## Make monitor settings persist between reboots
 eval $(awk -F'=' '/Exec=/ {print $2}' ~/.config/autostart/lxrandr-autostart.desktop) &
