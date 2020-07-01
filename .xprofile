@@ -40,7 +40,4 @@ launch_polybar &
 eval $(awk -F'=' '/Exec=/ {print $2}' ~/.config/autostart/lxrandr-autostart.desktop) &
 
 ## Map super key to trigger rofi when used alone
-xcape -e 'Super_L=Super_L|Shift_L|space' &
-
-## Custom Scripts
-# setbg ~/Pictures/Wallpapers/ &
+xcape -e 'Super_L=Super_L|Shift_L|space'
