@@ -15,8 +15,7 @@ bgloc="${XDG_DATA_HOME:-$HOME/.local/share/}/bg"
 
 # If pywal is installed, use it.
 wal -i "$(readlink -f "$bgloc")" -o "${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
-
-sh ~/.config/bspwm/bspwmrc
+printf "%b" "\033]11;#000000\007" &
 
 feh --bg-fill "$bgloc" --no-fehbg
 [ -f "${HOME}/.fehbg" ] && rm $HOME/.fehbg # --no-fehbg dosn't seem to work

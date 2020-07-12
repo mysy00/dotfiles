@@ -1,30 +1,4 @@
 ##run_once is a script in /usr/bin that prevents running script if it is running already
 ##
 
-## enable local fonts in .fonts directory
-xset +fp /usr/share/fonts/local &
-xset +fp /usr/share/fonts/misc &
-xset +fp ~/.fonts &
-xset fp rehash &
-fc-cache -fv &
-
-## Automount removable media
-devmon &
-
-## powersaving options
-xset s off &
-xset s noblank &
-xset s noexpose &
-xset c on &
-xset -dpms &
-xbacklight -set 15 &
-
-## Make monitor settings persist between reboots
-eval $(awk -F'=' '/Exec=/ {print $2}' ~/.config/autostart/lxrandr-autostart.desktop) &
-
-## Map super key to trigger rofi when used alone
-xcape -e 'Super_L=Super_L|Shift_L|space' &
-
-## Custom Scripts
-# setbg ~/Pictures/Wallpapers/ &
-launchpolybar &
+launch_polybar --silent &

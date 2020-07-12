@@ -24,4 +24,7 @@ done
 
 fix_sequences <"${HOME}/.cache/wal/sequences"
 
+xrdb -merge ~/.cache/wal/rofi.xres &
+sh ~/.config/bspwm/bspwmrc &
+
 pkill dunst; dunst &

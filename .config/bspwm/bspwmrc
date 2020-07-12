@@ -92,5 +92,4 @@ bspc config external_rules_command /usr/bin/pseudo_automatic_mode
 
 ## Autostart apps
 #sxhkd &
-launch_polybar &
-#. $HOME/.config/bspwm/autostart
+. $HOME/.config/bspwm/autostart
