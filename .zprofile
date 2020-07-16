@@ -3,7 +3,7 @@
 # zsh profile file. Runs on login. Environmental variables are set here.
 
 # Adds `~/.local/bin` to $PATH
-export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')"
+export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
 
 # Default programs:
 export EDITOR="nvim"
@@ -49,11 +49,6 @@ export LESS_TERMCAP_so=$'\e[1;33;41m'   # begin standout-mode - info box
 export LESS_TERMCAP_me=$'\e[m'          # end mode
 export LESS_TERMCAP_ue=$'\e[m'          # end underline
 export LESS_TERMCAP_se=$'\e[m'          # end standout-mode
+export QT_STYLE_OVERRIDE="gtk2"		# Have QT use gtk2 theme.
 export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
-#export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications
-
-#[ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ] && shortcuts >/dev/null 2>&1 &
-
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
