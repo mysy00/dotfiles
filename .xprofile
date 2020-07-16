@@ -11,7 +11,7 @@ mpd &			# music player daemon-you might prefer it as a service though
 remaps &		# run the remaps script, switching caps/esc and more; check it for more info
 setbg &			# set the background with the `setbg` script
 #xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/Xresources &	# Uncomment to use Xresources colors/settings on startup
-picom &		# xcompmgr for transparency
+picom &			# picom for transparency
 dunst &			# dunst for notifications
 xset r rate 500 35 &	# Speed xrate up
 setxkbmap pl &		# Set default keyboard layout
@@ -23,9 +23,6 @@ xset +fp ~/.fonts &
 xset fp rehash &
 fc-cache -fv &
 
-## Automount removable media
-devmon &
-
 ## powersaving options
 xset s off &
 xset s noblank &
@@ -36,6 +33,3 @@ xbacklight -set 55 &
 
 ## Make monitor settings persist between reboots
 eval $(awk -F'=' '/Exec=/ {print $2}' ~/.config/autostart/lxrandr-autostart.desktop) &
-
-## Map super key to trigger rofi when used alone
-xcape -e 'Super_L=Super_L|Shift_L|space'

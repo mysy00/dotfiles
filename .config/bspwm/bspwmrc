@@ -3,7 +3,7 @@ export gap=10
 export PANEL_HEIGHT=25
 
 ## Colors, gaps
-[[ -f "${HOME}/.cache/wal/colors.sh" ]] || setbg
+#[[ -f "${HOME}/.cache/wal/colors.sh" ]] || setbg
 . "${HOME}/.cache/wal/colors.sh"
 
 bspc config window_gap $gap;
@@ -23,9 +23,6 @@ bspc config presel_feedback_color "$color1"
 bspc config gapless_monocle false
 bspc config borderless_monocle  true
 bspc config single_monocle true
-#bspc config paddingless_monocle false
-#bspc config ignore_ewmh_focus      true
-#bspc config initial_polarity second_child
 bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 ## Honor size hints: do not make windows smaller than they wish to be
@@ -33,33 +30,13 @@ bspc config remove_unplugged_monitors true
 
 # Use mouse to change focus
 bspc config focus_follows_pointer false
-bspc config pointer_follows_focus false # Some keybindings automatically enable and disable this setting
 
-#bspc monitor -d i ii iii iv v vi vii viii ix x
-#bspc monitor -d One Two Three Four Five Six Seven Eight Nine Ten
-#bspc monitor -d I II III IV V VI VII VIII IX X
-#bspc monitor -d • • • • • • • • • •
 bspc monitor -d web code term social movie music prn "=)"
 
-## This creates and names desktops for multiple monitors.
-#workspaces_multimonitor &
-
 bspc rule -a screenkey --unmanage
-bspc rule -a gcolor2 state=floating center=true
-bspc rule -a lxappearance state=floating center=true
-bspc rule -a lxterminal state=floating center=true sticky=true
-bspc rule -a file-roller state=floating center=true
 bspc rule -a spotify state=pseudo_tiled
 bspc rule -a skype state=pseudo_tiled
-bspc rule -a file-roller state=pseudo_tiled
 bspc rule -a transmission-gtk state=pseudo_tiled
-bspc rule -a yad state=floating
-bspc rule -a google-chrome-unstable private=on
-bspc rule -a google-chrome-stable private=on
-bspc rule -a chromium private=on
-bspc rule -a firefox desktop=prn private=on
-bspc rule -a Navigator desktop=prn private=on # Firefox again, sometimes just this one works.
-bspc rule -a brave-browser private=on
 #bspc rule -a "microsoft teams - preview" desktop=social
 bspc rule -a wpa_gui state=pseudo_tiled
 bspc rule -a libreoffice state=tiled
@@ -77,19 +54,8 @@ bspc rule -a discord desktop=social
 bspc rule -a firefox desktop=prn private=on
 bspc rule -a Navigator desktop=prn private=on # Firefox again, sometimes just this one works.
 
-#bspc desktop I --layout monocle
-#bspc desktop II --layout monocle
-
-##  Autogap adjusts windowgap automatically according to the number of
-##  windows on the desktop. Using it disables negative window gap.
-#autogap &
-
-###External rules
-##Pseudo automatic mode: always splits focused window when opening new window
-bspc config external_rules_command /usr/bin/pseudo_automatic_mode
-##Adjust new window: splits biggest windows to keep windows about the same size
-#bspc config external_rules_command /usr/bin/adjust-new-window
+launch_polybar --silent &
 
 ## Autostart apps
 #sxhkd &
-. $HOME/.config/bspwm/autostart
+#. $HOME/.config/bspwm/autostart
