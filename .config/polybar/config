@@ -28,7 +28,7 @@ foreground = ${xrdb:color2137:#fff}
 foreground-alt = ${xrdb:color3:#555}
 
 [bar/default]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:}
 width = 100%
 height = 27
 

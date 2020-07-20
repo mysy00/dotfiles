@@ -52,3 +52,6 @@ export LESS_TERMCAP_se=$'\e[m'          # end standout-mode
 export QT_STYLE_OVERRIDE="gtk2"		# Have QT use gtk2 theme.
 export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -73,13 +73,13 @@ super + F9
 super + F10
 	playerctl next
 
-# Volume down by 5
+# Volume down by 3
 super + F11
-	amixer -D pulse sset Master 5%-
+	pactl set-sink-volume @DEFAULT_SINK@ -3%
 
-# Volume up by 5
+# Volume up by 3
 super + F12
-	amixer -D pulse sset Master 5%+
+	pactl set-sink-volume @DEFAULT_SINK@ +3%
 
 # Switch Desktop
 super + {1-9,0}

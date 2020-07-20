@@ -54,8 +54,9 @@ bspc rule -a discord desktop=social
 bspc rule -a firefox desktop=prn private=on
 bspc rule -a Navigator desktop=prn private=on # Firefox again, sometimes just this one works.
 
+## Autostart apps
+pidswallow --loop &
 launch_polybar --silent &
 
-## Autostart apps
 #sxhkd &
 #. $HOME/.config/bspwm/autostart
