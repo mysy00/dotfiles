@@ -8,7 +8,7 @@ super + space
 	rofi -show drun
 
 # Emoji picker
-super + period
+super + semicolon
 	rofimoji
 
 # Open terminal
@@ -84,6 +84,11 @@ super + F12
 # Switch Desktop
 super + {1-9,0}
 	bspc desktop -f ^{1-9,10}
+
+## xmonad style desktops. You have 10 desktops shared between all monitors,
+## and focusing a desktop focuses it on the currently focused monitor
+#super + {1-9,0}
+#	summondesktop {1-9,10}
 
 # #######
 # super + shift
@@ -216,16 +221,23 @@ super + ctrl + alt + t
 super + ctrl + shift + t
 	bspcp float
 
-# Resize Window
-super + ctrl + shift + {h,j,k,l}
-	bspc node -p \~{west,south,north,east}
+# Resize floating window
+super + alt + {h,j,k,l}
+	xdotool getwindowfocus windowmove --relative %1 {-20 0, 0 +20, 0 -20, +20 0}
 
-super + ctrl + shift + {Left,Down,Up,Right}
-	bspc node -p \~{west,south,north,east}
+super + alt + {Left,Down,Up,Right}
+	xdotool getwindowfocus windowmove --relative %1 {-20 0, 0 +20, 0 -20, +20 0}
 
 # #######
 # super + alt
 # #######
+
+# Split window in x direction
+super + alt + {h,j,k,l}
+	bspc node -p \~{west,south,north,east}
+
+super + alt + {Left,Down,Up,Right}
+	bspc node -p \~{west,south,north,east}
 
 # Balance brother node. If you do this on biggest window of the desktop, it usually means balancing all windows with except the biggest.
 super + alt + b

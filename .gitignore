@@ -30,8 +30,10 @@ snap/
 .local/share/*
 !.local/share/applications
 .local/share/applications/mimeinfo.cache
+.local/bin/python*/
 
 .config/*
+!.config/bat/
 !.config/nvim/init.vim
 !.config/alacritty
 !.config/bspwm/

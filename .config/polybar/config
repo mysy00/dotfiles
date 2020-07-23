@@ -71,31 +71,29 @@ cursor-scroll = default
 type = internal/bspwm
 
 ; Note that the <label> needs to correspond with the bspwm workspace name
-ws-icon-0 = "web;%{T5}%{T-}"
-ws-icon-1 = "code;%{T5}%{T-}"
-ws-icon-2 = "term;%{T5}%{T-}"
-ws-icon-3 = "social;%{T5}%{T-}"
-ws-icon-4 = "movie;%{T5}%{T-}"
-ws-icon-5 = "music;%{T5}%{T-}"
-ws-icon-6 = "prn;%{T5}%{T-}"
-ws-icon-default = "%{T5}%{T-}"
+#ws-icon-0 = "web;%{T5}%{T-}"
+#ws-icon-1 = "code;%{T5}%{T-}"
+#ws-icon-2 = "term;%{T5}%{T-}"
+#ws-icon-3 = "social;%{T5}%{T-}"
+#ws-icon-4 = "movie;%{T5}%{T-}"
+#ws-icon-5 = "music;%{T5}%{T-}"
+#ws-icon-6 = "prn;%{T5}%{T-}"
+#ws-icon-default = "%{T5}%{T-}"
 
-format = <label-state> <label-mode>
+#format = <label-state> <label-mode>
 
-label-focused = %icon%
+#label-focused = %icon%
 label-focused-background = ${colors.background-alt}
 label-focused-padding = 2
 
-label-occupied = %icon%
 label-occupied-padding = 2
 
-label-urgent = %index%!
+#label-urgent = %index%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 label-dimmed-foreground = #333
 
-label-empty = %icon%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
