@@ -8,27 +8,16 @@
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
 mpd &			# music player daemon-you might prefer it as a service though
-remaps &		# run the remaps script, switching caps/esc and more; check it for more info
 setbg &			# set the background with the `setbg` script
-#xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/Xresources &	# Uncomment to use Xresources colors/settings on startup
 picom &			# picom for transparency
 dunst &			# dunst for notifications
-xset r rate 500 35 &	# Speed xrate up
+xset r rate 200 30 &	# Speed xrate up
 setxkbmap pl &		# Set default keyboard layout
 unclutter &		# Remove mouse when idle
 
-xset +fp /usr/share/fonts/local &
-xset +fp /usr/share/fonts/misc &
-xset +fp ~/.fonts &
-xset fp rehash &
 fc-cache -fv &
 
-## powersaving options
-xset s off &
-xset s noblank &
-xset s noexpose &
-xset c on &
-xset -dpms &
+## Powersaving options
 xbacklight -set 55 &
 
 ## Make monitor settings persist between reboots

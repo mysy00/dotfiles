@@ -309,13 +309,13 @@ animation-discharging-framerate = 750
 type = internal/date
 interval = 5
 
-date =
-date-alt = " %Y-%m-%d"
+date = "%d %b %Y"
+date-alt = "%d/%m/%Y"
 
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 #format-underline = ${xrdb:color12}
 

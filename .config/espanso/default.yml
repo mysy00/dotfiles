@@ -11,6 +11,156 @@ matches:
   - trigger: ":espanso"
     replace: "Hi there!"
 
+  - trigger: ":joy"
+    replace: "(⁀ᗢ⁀)"
+
+  - trigger: ":joy1"
+    replace: "٩(◕‿◕｡)۶"
+
+  - trigger: ":joy2"
+    replace: "(＾▽＾)"
+
+  - trigger: ":love"
+    replace: "ヽ(♡‿♡)ノ"
+
+  - trigger: ":love1"
+    replace: "(❤ω❤)"
+
+  - trigger: ":love2"
+    replace: "╰(*´︶`*)╯♡"
+
+  - trigger: ":love3"
+    replace: "(´♡‿♡`)"
+
+  - trigger: ":love4"
+    replace: "(◕‿◕)♡"
+
+  - trigger: ":love5"
+    replace: "( ´ ∀ `)ノ～ ♡"
+
+  - trigger: ":love6"
+    replace: "♡＼(￣▽￣)／♡"
+
+  - trigger: ":kiss"
+    replace: "(っ˘з(˘⌣˘ ) ♡"
+
+  - trigger: ":embarrassment"
+    replace: "(⁄ ⁄•⁄ω⁄•⁄ ⁄)"
+
+  - trigger: ":embarrassment1"
+    replace: "(⁄ ⁄>⁄ ▽ ⁄<⁄ ⁄)"
+
+  - trigger: ":embarrassment2"
+    replace: "(*μ_μ)"
+
+  - trigger: ":ohstopit"
+    replace: "(ง ื▿ ื)ว"
+
+  - trigger: ":sympathy"
+    replace: "(っ´ω`)ﾉ(╥ω╥)"
+
+  - trigger: ":angry"
+    replace: "(」°ロ°)」"
+
+  - trigger: ":fuckyou"
+    replace: "凸(￣ヘ￣)"
+
+  - trigger: ":fuckyou1"
+    replace: "凸( ` ﾛ ´ )凸"
+
+  - trigger: ":furious"
+    replace: "(ノ°益°)ノ"
+
+  - trigger: ":sad"
+    replace: "(╯_╰)"
+
+  - trigger: ":sad1"
+    replace: "(╯︵╰,)"
+
+  - trigger: ":sad2"
+    replace: "(｡•́︿•̀｡)"
+
+  - trigger: ":dead"
+    replace: "(×_×)"
+
+  - trigger: ":shrug"
+    replace: "¯\_(ツ)_/¯"
+
+  - trigger: ":shruge"
+    replace: "¯\\_(ツ)_/¯"
+
+  - trigger: ":meh"
+    replace: "┐( ˘､˘ )┌	"
+
+  - trigger: ":wat"
+    replace: "(•ิ_•ิ)?"
+
+  - trigger: ":wat1"
+    replace: "(・・ ) ?"
+
+  - trigger: ":shock"
+    replace: "(o_O)"
+
+  - trigger: ":shock1"
+    replace: ""
+
+  - trigger: ":hi"
+    replace: "(°▽°)/"
+
+  - trigger: ":hi1"
+    replace: "(￣▽￣)ノ"
+
+  - trigger: ":wink"
+    replace: "( ﾟｏ⌒)"
+
+  - trigger: ":sorry"
+    replace: "(シ. .)シ"
+
+  - trigger: ":run"
+    replace: "C= C= C= C=┌( `ー´)┘"
+
+  - trigger: ":run1"
+    replace: "C= C= C= C= C=┌(;・ω・)┘"
+
+  - trigger: ":sleep"
+    replace: "(－_－) zzZ"
+
+  - trigger: ":sleep1"
+    replace: "(￣o￣) zzZZzzZZ"
+
+  - trigger: ":bear"
+    replace: "ʕ •ᴥ• ʔ"
+
+  - trigger: ":bear1"
+    replace: "ʕ ᵔᴥᵔ ʔ"
+
+  - trigger: ":lenny"
+    replace: "( ͡° ͜ʖ ͡°)"
+
+  - trigger: ":sadlenny"
+    replace: "( ͡° ʖ̯ ͡°)"
+
+  - trigger: ":angrylenny"
+    replace: "( ͠° ͟ʖ ͡°)"
+
+  - trigger: ":disgusted"
+    replace: "( ಠ ʖ̯ ಠ)"
+
+  - trigger: ":tableflip"
+    replace: "( ╯°□°)╯ ┻━━┻	"
+
+  - trigger: ":tableback"
+    replace: "┬─┬ノ( º _ ºノ)"
+
+  - trigger: ":ghost"
+    replace: "ᶘᵒᴥᵒᶅ"
+
+  - trigger: ":cute"
+    replace: "(｡◕‿‿◕｡)"
+
+  - trigger: ":excited"
+    replace: "(ʘ‿ʘ)"
+
   # Dates
   - trigger: ":date"
     replace: "{{mydate}}"
@@ -28,68 +178,3 @@ matches:
         type: shell
         params:
           cmd: "echo Hello from your shell"
-  - trigger: ":lenny:"
-    replace: "( ͡° ͜ʖ ͡°)"
-
-  - trigger: ":shrug:"
-    replace: "¯\_(ツ)\_/¯"
-
-  - trigger: ":shrugw:"
-    replace: "¯\\\_(ツ)\_/¯"
-
-  - trigger: ":sad:"
-    replace: "( ͡° ʖ̯ ͡°)"
-
-  - trigger: ":sad1:"
-    replace: "(｡•́︿•̀｡)"
-
-  - trigger: ":sad2:"
-    replace: "(ಥ﹏ಥ)"
-
-  - trigger: ":shocked:"
-    replace: "( ಠ_ಠ)"
-
-  - trigger: ":tableflip:"
-    replace: "(╯°□°）╯︵ ┻━┻"
-
-  - trigger: ":tableback:"
-    replace: "┬─┬ノ(º_ºノ)"
-
-  - trigger: ":ghost:"
-    replace: "ᶘᵒᴥᵒᶅ"
-
-  - trigger: ":cute:"
-    replace: "(｡◕‿‿◕｡)"
-
-  - trigger: ":bear:"
-    replace: "ʕ•ᴥ•ʔ"
-
-  - trigger: ":excited:"
-    replace: "(ʘ‿ʘ)"
-
-  - trigger: ":blink:"
-    replace: "( ͡~ ͜ʖ ͡°)"
-
-  - trigger: ":happy:"
-    replace: "ヽ(・∀・)ﾉ"
-
-  - trigger: ":happy1:"
-    replace: "(*°▽°*)"
-
-  - trigger: ":happy2:"
-    replace: "＼(＾▽＾)／"
-
-  - trigger: ":love:"
-    replace: "ヽ(♡‿♡)ノ"
-
-  - trigger: ":love1:"
-    replace: "( ´ ∀ `)ノ～ ♡"
-
-  - trigger: ":love2:"
-    replace: "(っ˘з(˘⌣˘ ) ♡"
-
-  - trigger: ":dead:"
-    replace: "(×_×)"
-
-  - trigger: ":bearangry:"
-    replace: "ʕ •̀ o •́ ʔ"
