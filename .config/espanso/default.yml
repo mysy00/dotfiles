@@ -83,10 +83,10 @@ matches:
   - trigger: ":dead"
     replace: "(×_×)"
 
-  - trigger: ":shrug"
+  - trigger: ":eshrug"
     replace: "¯\_(ツ)_/¯"
 
-  - trigger: ":shruge"
+  - trigger: ":shrug"
     replace: "¯\\_(ツ)_/¯"
 
   - trigger: ":meh"
