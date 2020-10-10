@@ -1,7 +1,6 @@
 ﻿# Show keybindings
 super + F1
 	keybindings
-#	$TERMINAL -e keybindings
 
 # Run rofi run
 super + space
@@ -17,7 +16,7 @@ super + Return
 
 # Open the main editor
 super + e
-	$EDITOR
+	$TERMINAL -e $EDITOR
 
 super + c
 	code
@@ -26,17 +25,13 @@ super + c
 super + b
 	$BROWSER
 
-# Open Firefox
-super + p
-	firefox
-
 # Open Discord
 super + d
 	discord
 
 # Open Thunar
 super + f
-	thunar
+	$TERMINAL -e ranger
 
 # Open Bluetooth manager
 super + t
@@ -46,49 +41,41 @@ super + t
 super + x
 	bspc node -c
 
-# Select previous / next desktop
-super + {comma,period}
-	bspc desktop -f {prev.occupied,next.occupied}
-
 # Go to specific window
 super + Tab
 	rofi -show window
 
 # Focus windows by direction, works with multihead
 super + {h,j,k,l}
-    focusmover {west,south,north,east}
+	focusmover {west,south,north,east}
 
 super + {Left,Down,Up,Right}
-    focusmover {west,south,north,east}
+	focusmover {west,south,north,east}
 
 # Mute song
 super + m
 	playerctl play-pause
 
 # Previous song
-super + F9
+super + u
 	playerctl previous
 
 # Next song
-super + F10
+super + i
 	playerctl next
 
 # Volume down by 3
-super + F11
+super + o
 	pactl set-sink-volume @DEFAULT_SINK@ -3%
 
 # Volume up by 3
-super + F12
+super + p
 	pactl set-sink-volume @DEFAULT_SINK@ +3%
 
 # Switch Desktop
-super + {1-9,0}
-	bspc desktop -f ^{1-9,10}
-
-## xmonad style desktops. You have 10 desktops shared between all monitors,
-## and focusing a desktop focuses it on the currently focused monitor
-#super + {1-9,0}
-#	summondesktop {1-9,10}
+super + {1-9}
+    D={1-9}; \
+    bspc desktop -f "$(bspc query -D -m | sed -n "$D p")"
 
 # #######
 # super + shift
@@ -118,7 +105,7 @@ super + shift + s
 super + shift + Escape
 	bspc node -g locked
 
-# Make window master or  move to preselected area
+# Make window master or move to preselected area
 super + shift + Return
     windowpromoter
 
@@ -130,16 +117,17 @@ super + shift + {Left,Down,Up,Right}
 	windowgrabber {west,south,north,east}
 
 # Move window to another desktop
-super + shift + {1-9,0}
-    bspc node -d ^{1-9,10}
+super + shift + {1-9}
+    D={1-9}; \
+    bspc node -d "$(bspc query -D -m | sed -n "$D p")"
 
 # Toggle monocle mode
 super + shift + m
 	bspc desktop -l next
 
-# Toggle pseudo tiling mode of a window - ratio fix
+# Toggle pseudo tiling mode of a window; ratio fix
 super + shift + r
-	bspc   node -t {pseudo_tiled,tiled}
+	bspc node -t {pseudo_tiled,tiled}
 
 # Toggle fullscreen
 super + shift + f
@@ -154,8 +142,12 @@ super + shift + {colon,quotedbl}
 	bspc node @/ -R {90,270}
 
 # Mirror and flip leaves of tree
-super + shift + {less,greater}
+super + shift + {bracketleft,bracketright}
 	bspc node @/ -F {horizontal,vertical}
+
+# Select previous / next desktop
+super + shift + {comma,period}
+	bspc monitor -f {prev,next}
 
 # #######
 # super + ctrl
@@ -200,14 +192,9 @@ super + ctrl + {Left,Down,Up,Right}
 super + ctrl + b
 	bspc node @/ -E
 
-# Toggle compositing
+# Split window in its largest dimension
 super + ctrl + space
-	{pkill picom ,\
-	picom -b }
-
-# #######
-# super + ctrl + alt
-# #######
+	auto-presel
 
 # Force all windows of the desktop to tile
 super + ctrl + alt + t
@@ -221,12 +208,14 @@ super + ctrl + alt + t
 super + ctrl + shift + t
 	bspcp float
 
-# Resize floating window
-super + alt + {h,j,k,l}
-	xdotool getwindowfocus windowmove --relative %1 {-20 0, 0 +20, 0 -20, +20 0}
+# Toggle compositing
+super + ctrl + shift + space
+	{pkill picom ,\
+	picom -b }
 
-super + alt + {Left,Down,Up,Right}
-	xdotool getwindowfocus windowmove --relative %1 {-20 0, 0 +20, 0 -20, +20 0}
+# Presel window for splitting in certain direction
+super + ctrl + shift + {a,s,w,d}
+	bspc node -p \~{west,south,north,east} -i
 
 # #######
 # super + alt
@@ -243,29 +232,20 @@ super + alt + {Left,Down,Up,Right}
 super + alt + b
 	bspc node @brother -B
 
-# #######
-# ctrl
-# #######
+# Resize floating window
+super + alt + {h,j,k,l}
+	xdotool getwindowfocus windowmove --relative %1 {-20 0, 0 +20, 0 -20, +20 0}
 
-# Split window in its largest dimension
-ctrl + space
-	auto-presel
+super + alt + {Left,Down,Up,Right}
+	xdotool getwindowfocus windowmove --relative %1 {-20 0, 0 +20, 0 -20, +20 0}
 
 # #######
 # alt
 # #######
 
-# Toggle automatic balancing of windows
-alt + b
-	euclidbalancer
-
-# #######
-# alt + ctrl
-# #######
-
-# Presel window for splitting in certain direction
-alt + ctrl + {a,s,w,d}
-	bspc node -p \~{west,south,north,east} -i
+# cycle windows
+alt + {_,shift + }Tab
+    bspc node -f {next,prev}
 
 # #######
 # alt + shift
@@ -282,17 +262,6 @@ alt + shift + 4
 # #######
 # other
 # #######
-
-# cycle windows
-alt + {_,shift + }Tab
-    bspc node -f {next,prev}
-
-
-# Switch workspace by scrolling on the desktop. Causes scrolling issues on some systems.
-~button4
-	DidIClickDesktop && bspc desktop -f next
-~button5
-	DidIClickDesktop && bspc desktop -f prev
 
 # Take a pretty screenshot of focused window
 Print
@@ -315,11 +284,3 @@ XF86MonBrightnessUp
 
 XF86Sleep
 	systemctl suspend
-
-
-## xmonad style desktops. You have 10 desktops shared between all monitors,
-## and focusing a desktop focuses it on the currently focused monitor
-#super + {1-9,0}
-#	summondesktop {1-9,10}
-#super + shift + {1-9,0}
-#	bspc node -d ^{1-9,10}

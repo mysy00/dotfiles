@@ -8,7 +8,6 @@ alias \
 	cp="cp -iv" \
 	mv="mv -iv" \
 	rm="rm -vI" \
-	ll="ls -lA" \
 	mkd="mkdir -pv" \
 	free="free -m" \
 	df="df -h" \
@@ -35,7 +34,6 @@ alias \
 	e="$EDITOR" \
 	v="$EDITOR" \
 	p="sudo pacman" \
+	r="ranger" \
+	o="xdg-open" \
 	z="zathura"
-
-# Manage dot files
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

@@ -29,7 +29,6 @@ HISTFILE=~/.cache/zsh/history
 
 # Load aliases and shortcuts if existent.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc"
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -49,7 +48,7 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
-# Navigate words with ctrl+arrow keys
+# Navigate words with ctrl+arrow keys.
 bindkey '^[Oc' forward-word                                     #
 bindkey '^[Od' backward-word                                    #
 bindkey '^[[1;5D' backward-word                                 #
@@ -71,16 +70,12 @@ function zle-keymap-select {
 }
 zle -N zle-keymap-select
 zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    zle -K viins # Initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere).
     echo -ne "\e[5 q"
 }
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-
-# Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
 
 # Load NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -95,13 +90,11 @@ source "/usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substrin
 # Suggest the command I want to type.
 source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_USE_ASYNC="enabled" # set it to anything; without it typing is laggy
+ZSH_AUTOSUGGEST_USE_ASYNC="enabled" # Set it to anything; without it typing is laggy.
 
-# bind UP and DOWN arrow keys to history substring search
+# Bind UP and DOWN arrow keys to history substring search.
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-
-(cat ~/.cache/wal/sequences && printf "%b" "\033]11;#000000\007" &)

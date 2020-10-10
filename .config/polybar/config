@@ -22,7 +22,6 @@ secondary = ${xrdb:color2:#e60053}
 alert = ${xrdb:color8:bd2c40}
 
 background = ${xrdb:background:#000}
-;background-alt = ${xrdb:color13:#444}
 background-alt = ${colors.primary}
 foreground = ${xrdb:color2137:#fff}
 foreground-alt = ${xrdb:color3:#555}
@@ -58,8 +57,6 @@ tray-position = right
 tray-padding = 2
 
 wm-restack = bspwm
-
-;override-redirect = true
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
@@ -97,9 +94,6 @@ label-dimmed-foreground = #333
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
-; Separator in between workspaces
-; label-separator = |
-
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
@@ -119,7 +113,7 @@ label-song-ellipsis = true
 
 [module/updates]
 type = custom/script
-exec = checkup -r "arch" -fc
+exec = checkup -r "arch" -c
 click-left = checkup -r "arch" -n
 interval = 3600
 
@@ -129,10 +123,10 @@ format-prefix-foreground = ${colors.foreground-alt}
 
 [module/updatesaur]
 type = custom/script
-#exec = checkup -r "aur" -fc
+#exec = checkup -r "aur" -c
 #click-left = "checkup -r "aur" -n
 #interval = 3600
-
+#
 #format = <label>
 #format-prefix = " "
 #format-prefix-foreground = ${colors.foreground-alt}
@@ -179,6 +173,9 @@ exec = rofi-bluetooth --status
 interval = 1
 click-left = rofi-bluetooth &
 
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+
 [module/wlan]
 type = internal/network
 interface = wlp3s0
@@ -206,7 +203,7 @@ interface = enp0s25
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " ETH"
+format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
@@ -235,7 +232,7 @@ exec = ~/.config/polybar/scripts/fan-speed.sh
 interval = 5
 
 format = <label>
-format-prefix = "  "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 
 [module/temperature]
@@ -283,15 +280,13 @@ battery = BAT1
 adapter = AC
 full-at = 98
 
-#format-charging-prefix = "charging"
 format-charging = <animation-charging> <label-charging>
 
 format-discharging-prefix = "discharging"
 format-discharging = <animation-discharging> <label-discharging>
 
 label-full = 
-#format-full-prefix = " full"
-; format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix = " full"
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -317,7 +312,6 @@ time-alt = %H:%M:%S
 
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-#format-underline = ${xrdb:color12}
 
 label = %date% %time%
 

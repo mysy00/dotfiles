@@ -35,7 +35,8 @@ bspc config focus_follows_pointer false
 #bspc monitor -d web code term social movie music prn "=)"
 #bspc monitor DP-1 -d 1 2 3 4 5
 #bspc monitor HDMI-2 -d 6 7 8 9
-workspaces_multimonitor &
+#workspaces_multimonitor &
+bspc monitor -d 1 2 3 4 5 6 7 8 9 "=)"
 
 bspc rule -a screenkey --unmanage
 bspc rule -a spotify state=pseudo_tiled
