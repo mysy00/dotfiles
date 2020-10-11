@@ -285,8 +285,9 @@ format-charging = <animation-charging> <label-charging>
 format-discharging-prefix = "discharging"
 format-discharging = <animation-discharging> <label-discharging>
 
-label-full = 
-format-full-prefix = " full"
+label-full = "full"
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
 
 animation-charging-0 = 
 animation-charging-1 = 
