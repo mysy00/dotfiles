@@ -11,7 +11,7 @@ mpd &			# music player daemon-you might prefer it as a service though
 setbg &			# set the background with the `setbg` script
 picom &			# picom for transparency
 dunst &			# dunst for notifications
-xset r rate 200 30 &	# Speed xrate up
+xset r rate 170 60 &	# Speed xrate up
 setxkbmap pl &		# Set default keyboard layout
 unclutter &		# Remove mouse when idle
 
