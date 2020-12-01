@@ -23,6 +23,7 @@ application/x-extension-shtml=browser.desktop
 application/xhtml+xml=browser.desktop
 application/x-extension-xhtml=browser.desktop
 application/x-extension-xht=browser.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-BSLEU0.desktop
 
 [Added Associations]
 x-scheme-handler/http=browser.desktop;
@@ -36,3 +37,4 @@ application/x-extension-shtml=browser.desktop;
 application/xhtml+xml=browser.desktop;
 application/x-extension-xhtml=browser.desktop;
 application/x-extension-xht=browser.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-BSLEU0.desktop;

@@ -1,8 +1,7 @@
-if &shell =~# 'fish$'
-    set shell=sh
-endif
+let mapleader = ","
 
-let mapleader =","
+let g:vimtex_view_method = 'zathura'
+let g:tex_flavor = 'latex'
 
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
@@ -20,13 +19,16 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'ap/vim-css-color'
+Plug 'lervag/vimtex'
 call plug#end()
 
+set title
 set bg=light
 set go=a
 set mouse=a
 set nohlsearch
 set clipboard+=unnamedplus
+set noshowmode
 
 " Some basics:
 	nnoremap c "_c
@@ -42,6 +44,9 @@ set clipboard+=unnamedplus
 " Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" Perform dot commands over visual blocks:
+	vnoremap . :normal .<CR>
+
 " Goyo plugin makes text more readable when writing prose:
 	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
 
@@ -54,6 +59,11 @@ set clipboard+=unnamedplus
 " Nerd tree
 	map <leader>n :NERDTreeToggle<CR>
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+	if has('nvim')
+        	let NERDTreeBookmarksFile = stdpath('data') . '/NERDTreeBookmarks'
+    	else
+        	let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
+   	endif
 
 " Shortcutting split navigation, saving a keypress:
 	map <C-h> <C-w>h
@@ -61,17 +71,16 @@ set clipboard+=unnamedplus
 	map <C-k> <C-w>k
 	map <C-l> <C-w>l
 
-" Replace ex mode with gq
-	map Q gq
-
 " Check file in shellcheck:
-	map <leader>s :!clear && shellcheck %<CR>
+	map <leader>s :!clear && shellcheck -x %<CR>
+
+map <leader>s :!clear && shellcheck %<CR>
 
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>
 
 " Compile document, be it groff/LaTeX/markdown/etc.
-	map <leader>c :w! \| !compiler <c-r>%<CR>
+	map <leader>c :w! \| !compiler "<c-r>%"<CR>
 
 " Open corresponding .pdf/.html or preview
 	map <leader>p :!opout <c-r>%<CR><CR>
@@ -86,25 +95,32 @@ set clipboard+=unnamedplus
 	autocmd BufRead,BufNewFile *.rasi set filetype=css
 	autocmd BufRead,BufNewFile *.vim set filetype=vim
 
-" Save file as sudo on files that require root permission
+" Save file as sudo on files that require root permission (doesn't work for some reason, TODO: look into it)
 	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+	command W w !sudo tee % > /dev/null
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
 	autocmd BufWritePre * %s/\s\+$//e
-	autocmd BufWritepre * %s/\n\+\%$//e
-
-" When shortcut files are updated, renew bash and ranger configs with new material:
-	autocmd BufWritePost files,directories !shortcuts
+	autocmd BufWritePre * %s/\n\+\%$//e
 
 " Run xrdb whenever Xdefaults or Xresources are updated.
-	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
+	autocmd BufRead,BufNewFile xresources,xdefaults set filetype=xdefaults
+	autocmd BufWritePost *Xresources,*Xdefaults,*xresources,*xdefaults !xrdb %
+
 
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
 
-" Relaunch polybar when its config is updated.
-	autocmd BufWritePost ~/.config/polybar/config silent exec "!killall polybar"
-	autocmd BufWritePost ~/.config/polybar/config silent exec "!fish -c launchpolybar"
+" Automatically format programming files.
+	" C#, Java
+	autocmd BufWritePost *.cs,*.java !astyle %
+
+	" C, C++
+	function! Formatonsave()
+		let l:formatdiff = 1
+		pyf /usr/share/clang/clang-format.py
+	endfunction
+	autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
 
 " Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
 if &diff

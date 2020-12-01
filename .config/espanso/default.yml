@@ -11,14 +11,17 @@ matches:
   - trigger: ":espanso"
     replace: "Hi there!"
 
-  - trigger: ":joy"
+  - trigger: ":joy1"
     replace: "(⁀ᗢ⁀)"
 
-  - trigger: ":joy1"
+  - trigger: ":joy2"
     replace: "٩(◕‿◕｡)۶"
 
-  - trigger: ":joy2"
+  - trigger: ":joy3"
     replace: "(＾▽＾)"
+
+  - trigger: ":joy4"
+    replace: "(◠‿◠)"
 
   - trigger: ":love"
     replace: "ヽ(♡‿♡)ノ"

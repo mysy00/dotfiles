@@ -30,11 +30,12 @@ case "$ext" in
 	[0-9]) preconv "$file" | refer -PS -e | groff -mandoc -T pdf > "$base".pdf ;;
 	c) cc "$file" -o "$base" && "$base" ;;
 	go) go run "$file" ;;
+	cpp) g++ "$file" -o "$base" && "$base" ;;
 	h) sudo make install ;;
 	m) octave "$file" ;;
-	md)	if  command -v lowdown >/dev/null; then
+	md)	if  [ -x "$(command -v lowdown)" ]; then
 			lowdown -d nointem -e super "$file" -Tms | groff -mpdfmark -ms -kept > "$base".pdf
-		elif command -v groffdown >/dev/null; then
+		elif [ -x "$(command -v groffdown)" ]; then
 			groffdown -i "$file" | groff > "$base.pdf"
 		else
 			pandoc "$file" --pdf-engine=xelatex -o "$base".pdf

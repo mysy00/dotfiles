@@ -1,6 +1,6 @@
 ﻿# Show keybindings
-super + F1
-	keybindings
+super + h
+	cheatsheet
 
 # Run rofi run
 super + space
@@ -8,7 +8,7 @@ super + space
 
 # Emoji picker
 super + semicolon
-	rofimoji
+	rofi-generic --input-file "/home/mysy/.config/test.txt" -s " | "
 
 # Open terminal
 super + Return
@@ -76,6 +76,10 @@ super + p
 super + {1-9}
     D={1-9}; \
     bspc desktop -f "$(bspc query -D -m | sed -n "$D p")"
+
+# Select previous / next desktop
+super + {comma,period}
+	bspc desktop -f {prev,next}
 
 # #######
 # super + shift
@@ -145,7 +149,7 @@ super + shift + {colon,quotedbl}
 super + shift + {bracketleft,bracketright}
 	bspc node @/ -F {horizontal,vertical}
 
-# Select previous / next desktop
+# Select previous / next monitor
 super + shift + {comma,period}
 	bspc monitor -f {prev,next}
 
@@ -192,45 +196,37 @@ super + ctrl + {Left,Down,Up,Right}
 super + ctrl + b
 	bspc node @/ -E
 
-# Split window in its largest dimension
-super + ctrl + space
-	auto-presel
-
-# Force all windows of the desktop to tile
-super + ctrl + alt + t
-	bspcp tile
-
 # #######
 # super + ctrl + shift
 # #######
 
-# Force all windows of the desktop to float and arrange them
-super + ctrl + shift + t
-	bspcp float
-
 # Toggle compositing
 super + ctrl + shift + space
 	{pkill picom ,\
-	picom -b }
+	picom --experimental-backends}
 
-# Presel window for splitting in certain direction
+# Presel window for splitting in certain direction (receptacles)
 super + ctrl + shift + {a,s,w,d}
 	bspc node -p \~{west,south,north,east} -i
+
+# Move node to a different monitor
+super + ctrl + shift + {1-9}
+	bspc node -m ^{1-9} && bspc monitor -f ^{1-9}
+
+# Move node to the prev/next monitor
+super + ctrl + shift + {period,comma}
+	bspc node -m {prev,next} && bspc monitor -f {prev,next}
 
 # #######
 # super + alt
 # #######
 
-# Split window in x direction
+# Split window in x direction (preselection)
 super + alt + {h,j,k,l}
 	bspc node -p \~{west,south,north,east}
 
 super + alt + {Left,Down,Up,Right}
 	bspc node -p \~{west,south,north,east}
-
-# Balance brother node. If you do this on biggest window of the desktop, it usually means balancing all windows with except the biggest.
-super + alt + b
-	bspc node @brother -B
 
 # Resize floating window
 super + alt + {h,j,k,l}
@@ -238,6 +234,14 @@ super + alt + {h,j,k,l}
 
 super + alt + {Left,Down,Up,Right}
 	xdotool getwindowfocus windowmove --relative %1 {-20 0, 0 +20, 0 -20, +20 0}
+
+# #######
+# super + alt + shift
+# #######
+
+# Split window in its largest dimension
+super + alt + shift + space
+	auto-presel
 
 # #######
 # alt
@@ -253,14 +257,14 @@ alt + {_,shift + }Tab
 
 # Take full-size screenshot and copy it to the clipboard
 alt + shift + 3
-	maim | xclip -selection  clipboard  -t image/png
+	maim -u | xclip -selection  clipboard  -t image/png
 
 # Take screenshot of a section and copy it to the clipboard
 alt + shift + 4
-	maim -s | xclip -selection  clipboard  -t image/png
+	maim -su | xclip -selection  clipboard  -t image/png
 
 # #######
-# other
+# Other
 # #######
 
 # Take a pretty screenshot of focused window

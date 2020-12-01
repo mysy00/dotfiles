@@ -47,20 +47,14 @@ bspc rule -a wpa_gui state=pseudo_tiled
 bspc rule -a libreoffice state=tiled
 bspc rule -a '*:libreofficedev' state=tiled
 bspc rule -a '*:soffice' state=tiled
+bspc rule -a 'Zathura' state=tiled
 
-## Set workspaces
-# Code
-bspc rule -a Code desktop=code
-
-# Social
-bspc rule -a discord desktop=social
-
-# prn
-bspc rule -a firefox desktop=prn private=on
-bspc rule -a Navigator desktop=prn private=on # Firefox again, sometimes just this one works.
+xset r rate 170 60 &	# Speed xrate up
+setxkbmap pl &
+setxkbmap -option caps:swapescape
 
 ## Autostart apps
-pidswallow --loop &
+#pidswallow --loop &
 launch_polybar --silent &
 
 #sxhkd &

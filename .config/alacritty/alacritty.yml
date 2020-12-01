@@ -13,7 +13,7 @@ window:
 background_opacity: 0.87
 
 shell:
-  program: /bin/zsh
+  program: /usr/bin/fish
 
 key_bindings:
   #- { key: Paste,                                action: Paste          }

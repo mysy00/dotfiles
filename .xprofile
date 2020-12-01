@@ -13,12 +13,8 @@ picom &			# picom for transparency
 dunst &			# dunst for notifications
 xset r rate 170 60 &	# Speed xrate up
 setxkbmap pl &		# Set default keyboard layout
+setxkbmap -option caps:swapescape # Swap capslock with escape
 unclutter &		# Remove mouse when idle
-
-fc-cache -fv &
 
 ## Powersaving options
 xbacklight -set 55 &
-
-## Make monitor settings persist between reboots
-eval $(awk -F'=' '/Exec=/ {print $2}' ~/.config/autostart/lxrandr-autostart.desktop) &

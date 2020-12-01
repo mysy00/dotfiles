@@ -7,7 +7,8 @@ mkdir -p  "${HOME}/.config/zathura"
 ln -sf    "${HOME}/.cache/wal/dunstrc"    "${HOME}/.config/dunst/dunstrc"
 ln -sf    "${HOME}/.cache/wal/zathurarc"    "${HOME}/.config/zathura/zathurarc"
 
-xrdb -merge ~/.cache/wal/rofi.xres &
+xrdb -merge ~/.cache/wal/colors.Xresources &
+#xrdb -merge ~/.cache/wal/rofi.xres &
 #sh ~/.config/bspwm/bspwmrc &
 
 pkill dunst; dunst &

@@ -40,8 +40,8 @@ line-color = #f00
 padding-left = 0
 padding-right = 2
 
-module-margin-left = 3
-module-margin-right = 3
+module-margin-left = 2
+module-margin-right = 2
 
 ;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-0 = fixed:pixelsize=10;1
@@ -51,7 +51,7 @@ font-3 = FontAwesome:style=Regular;2
 font-4 = Ionicons:style=Regular;2
 
 modules-left = bspwm xwindow
-modules-right = mpd updates updatesaur xbacklight xkeyboard bluetooth wlan eth memory cpu fanspeed temperature pulseaudio battery date
+modules-right = mpd updates updatesaur xbacklight xkeyboard bluetooth wlan eth memory cpu fanspeed temperature pulseaudio battery date dunst
 
 tray-position = right
 tray-padding = 2
@@ -66,7 +66,6 @@ cursor-scroll = default
 
 [module/bspwm]
 type = internal/bspwm
-
 ; Note that the <label> needs to correspond with the bspwm workspace name
 #ws-icon-0 = "web;%{T5}%{T-}"
 #ws-icon-1 = "code;%{T5}%{T-}"
@@ -81,6 +80,7 @@ type = internal/bspwm
 
 #label-focused = %icon%
 label-focused-background = ${colors.background-alt}
+label-focused-foreground = ${colors.background}
 label-focused-padding = 2
 
 label-occupied-padding = 2
@@ -89,7 +89,7 @@ label-occupied-padding = 2
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-dimmed-foreground = #333
+#label-dimmed-foreground = #777
 
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
@@ -316,37 +316,13 @@ format-prefix-foreground = ${colors.foreground-alt}
 
 label = %date% %time%
 
-[module/powermenu]
-type = custom/menu
+[module/dunst]
+type = custom/script
+exec = ~/.config/polybar/scripts/dunst-status.sh
+tail = true
+click-left = dunstctl set-paused toggle && kill -USR1 %pid%
 
-expand-right = true
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.background-alt}
-label-close =  cancel
-label-close-foreground = ${colors.background-alt}
-label-separator = " | "
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 =  reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 =  power off
-menu-0-1-exec = menu-open-2
-menu-0-2 =  logout
-menu-0-2-exec = menu-open-3
-
-menu-1-0 =  cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 =  reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 =  power off
-menu-2-0-exec = poweroff
-
-menu-3-0 =  logout
-menu-3-0-exec = pkill -U $USER
+format-foreground = ${colors.foreground-alt}
 
 [settings]
 screenchange-reload = true
