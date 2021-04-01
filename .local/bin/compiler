@@ -54,4 +54,4 @@ case "$ext" in
 	sent) setsid -f sent "$file" 2>/dev/null ;;
 	tex) textype "$file" ;;
 	*) head -n1 "$file" | grep "^#!/" | sed "s/^#!//" | xargs -r -I % "$file" ;;
-esacsac
+esac

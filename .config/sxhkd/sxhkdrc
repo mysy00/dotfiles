@@ -23,7 +23,7 @@ super + c
 
 # Open web browser
 super + b
-	google-chrome-stable
+	$BROWSER
 
 # Open Discord
 super + d
