@@ -29,8 +29,8 @@ bspc config remove_unplugged_monitors true
 ## Honor size hints: do not make windows smaller than they wish to be
 #bspc config honor_size_hints true
 
-# Use mouse to change focus
-bspc config focus_follows_pointer false
+# Use mouse to change focus (useful only if working a lot with mouse-driven apps)
+bspc config focus_follows_pointer true 
 
 #bspc monitor -d web code term social movie music prn "=)"
 #bspc monitor DP-1 -d 1 2 3 4 5
@@ -48,14 +48,7 @@ bspc rule -a libreoffice state=tiled
 bspc rule -a '*:libreofficedev' state=tiled
 bspc rule -a '*:soffice' state=tiled
 bspc rule -a 'Zathura' state=tiled
-
-xset r rate 170 60 &	# Speed xrate up
-setxkbmap pl &
-setxkbmap -option caps:swapescape
+bspc rule -a 'packettracer5.exe' state=floating
 
 ## Autostart apps
-#pidswallow --loop &
-launch_polybar --silent &
-
-#sxhkd &
-#. $HOME/.config/bspwm/autostart
+. $HOME/.config/bspwm/autostart

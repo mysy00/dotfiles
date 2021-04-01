@@ -7,14 +7,9 @@
 # Add this when you include flatpak in your system
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
-mpd &			# music player daemon-you might prefer it as a service though
+mpd &				# music player daemon-you might prefer it as a service though
 setbg &			# set the background with the `setbg` script
-picom &			# picom for transparency
 dunst &			# dunst for notifications
-xset r rate 170 60 &	# Speed xrate up
-setxkbmap pl &		# Set default keyboard layout
-setxkbmap -option caps:swapescape # Swap capslock with escape
-unclutter &		# Remove mouse when idle
 
 ## Powersaving options
 xbacklight -set 55 &

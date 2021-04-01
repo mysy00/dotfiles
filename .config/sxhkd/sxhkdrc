@@ -1,5 +1,5 @@
 ﻿# Show keybindings
-super + h
+super + F1
 	cheatsheet
 
 # Run rofi run
@@ -23,7 +23,7 @@ super + c
 
 # Open web browser
 super + b
-	$BROWSER
+	google-chrome-stable
 
 # Open Discord
 super + d

@@ -2,6 +2,7 @@ let mapleader = ","
 
 let g:vimtex_view_method = 'zathura'
 let g:tex_flavor = 'latex'
+let g:csv_no_conceal = 1
 
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
@@ -20,7 +21,16 @@ Plug 'tpope/vim-commentary'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'ap/vim-css-color'
 Plug 'lervag/vimtex'
+Plug 'georgewitteman/vim-fish'
+Plug 'sheerun/vim-polyglot'
+Plug 'Yggdroot/indentLine'
+Plug 'rhysd/vim-clang-format'
+Plug 'z0mbix/vim-shfmt', {'for': 'sh'}
 call plug#end()
+
+" Add fish support.
+autocmd FileType fish compiler fish
+autocmd FileType fish setlocal textwidth=79
 
 set title
 set bg=light
@@ -37,6 +47,9 @@ set noshowmode
 	syntax on
 	set encoding=utf-8
 	set number relativenumber
+
+" Show indent line when tabbing
+	set list lcs=tab:\→\ 
 
 " Enable autocompletion:
 	set wildmode=longest,list,full
@@ -93,20 +106,19 @@ map <leader>s :!clear && shellcheck %<CR>
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
 	autocmd BufRead,BufNewFile *.rasi set filetype=css
-	autocmd BufRead,BufNewFile *.vim set filetype=vim
 
 " Save file as sudo on files that require root permission (doesn't work for some reason, TODO: look into it)
 	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 	command W w !sudo tee % > /dev/null
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
-	autocmd BufWritePre * %s/\s\+$//e
-	autocmd BufWritePre * %s/\n\+\%$//e
+	"autocmd BufWritePre * %s/\s\+$//e
+	"autocmd BufWritePre * %s/\n\+\%$//e
+	"autocmd BufWritePre *.[ch] %s/\%$/\r/e
 
 " Run xrdb whenever Xdefaults or Xresources are updated.
-	autocmd BufRead,BufNewFile xresources,xdefaults set filetype=xdefaults
-	autocmd BufWritePost *Xresources,*Xdefaults,*xresources,*xdefaults !xrdb %
-
+	autocmd BufRead,BufNewFile Xresources,Xdefaults,xresources,xdefaults set filetype=xdefaults
+	autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
 
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
@@ -116,13 +128,6 @@ map <leader>s :!clear && shellcheck %<CR>
 	autocmd BufWritePost *.cs,*.java !astyle %
 
 	" C, C++
-	function! Formatonsave()
-		let l:formatdiff = 1
-		pyf /usr/share/clang/clang-format.py
-	endfunction
-	autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+	autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+	autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 
-" Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
-if &diff
-    highlight! link DiffText MatchParen
-endif

@@ -15,7 +15,8 @@ alias \
 	yta="yt -x -f bestaudio/best" \
 	ffmpeg="ffmpeg -hide_banner" \
 	maim="maim -u" \
-	sudo="sudo "
+	sudo="sudo " \
+	picom="picom --experimental-backend"
 
 # Colorize commands when possible.
 alias \

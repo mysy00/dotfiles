@@ -9,7 +9,7 @@ application/pdf=pdf.desktop;
 image/png=img.desktop;
 image/jpeg=img.desktop;
 image/gif=img.desktop;
-image/svg+xml=svg.desktop;
+image/svg+xml=img.desktop;
 video/x-matroska=video.desktop
 inode/directory=file.desktop
 x-scheme-handler/msteams=teams.desktop
@@ -24,6 +24,7 @@ application/xhtml+xml=browser.desktop
 application/x-extension-xhtml=browser.desktop
 application/x-extension-xht=browser.desktop
 x-scheme-handler/tg=userapp-Telegram Desktop-BSLEU0.desktop
+x-scheme-handler/webcal=google-chrome.desktop
 
 [Added Associations]
 x-scheme-handler/http=browser.desktop;

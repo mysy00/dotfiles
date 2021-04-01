@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=Image Viewer
-Exec=/usr/bin/feh %F
+Exec=/usr/bin/imv %F

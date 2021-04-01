@@ -6,7 +6,15 @@
 !.config/bspwm/
 !.config/dunst/
 !.config/espanso/
-!.config/fish/
+!.config/fish/config.fish
+!.config/fish/fish_plugins
+!.config/fish/functions/man.fish
+!.config/fish/functions/ll.fish
+!.config/fish/functions/picom.fish
+!.config/fish/functions/r
+!.config/fish/functions/sv
+!.config/fish/functions/svim
+!.config/fish/functions/vim
 !.config/fontconfig/
 !.config/gtk-2.0/
 !.config/gtk-3.0/
@@ -15,6 +23,7 @@
 !.config/ncmpcpp/
 !.config/newsboat/
 !.config/nvim/init.vim
+!.config/paru/
 !.config/polybar/
 !.config/ranger/
 !.config/rofi/
@@ -32,7 +41,7 @@
 !.config/rofigeneric.rc
 !.config/rofimoji.rc
 !.config/user-dirs.dirs
-!.config/wall.png
+!.config/wall.jpg
 !.config/xinitrc
 !.local/bin
 !.local/share/applications/browser

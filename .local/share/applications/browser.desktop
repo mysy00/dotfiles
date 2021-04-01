@@ -2,4 +2,4 @@
 Type=Application
 Name=Web Browser
 Terminal=false
-Exec=google-chrome-stable
+Exec=google-chrome-stable %U

@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # This script does the following:
-#	Run by itself, set the wallpaper (at X start).
-#	If given a file, set that as the new wallpaper.
-#	If given a directory, choose random file in it.
-#	If wal is installed, also generates a colorscheme.
+# Run by itself, set the wallpaper (at X start).
+# If given a file, set that as the new wallpaper.
+# If given a directory, choose random file in it.
+# If wal is installed, also generates a colorscheme.
 
 # Location of link to wallpaper link.
 bgloc="${XDG_DATA_HOME:-$HOME/.local/share/}/bg"
@@ -15,24 +15,19 @@ bgloc="${XDG_DATA_HOME:-$HOME/.local/share/}/bg"
 
 # If pywal is installed, use it.
 #wal -n -b "#000000" -i "$(readlink -f "$bgloc")" -o "${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
-#printf "%b" "\033]11;#000000\007" &
-wal -i "$(readlink -f "$bgloc")" -o "$HOME/.config}/wal/postrun" >/dev/null 2>&1
+wal -in "$(readlink -f "$bgloc")" -o "$HOME/.config}/wal/postrun" > /dev/null 2>&1
 
-feh --bg-fill "$bgloc" --no-fehbg
-[ -f "${HOME}/.fehbg" ] && rm $HOME/.fehbg # --no-fehbg dosn't seem to work
+hsetroot -cover "$(readlink -f "$bgloc")" 1> /dev/null
 
-# Content of $HOME/.config/wal/postrun
 # External script provided to `wal` isn't being executed due to some bugs upstream
-
 source "${HOME}/.cache/wal/colors.sh"
 
-mkdir -p  "${HOME}/.config/dunst"
-mkdir -p  "${HOME}/.config/zathura"
-ln -sf    "${HOME}/.cache/wal/dunstrc"    "${HOME}/.config/dunst/dunstrc"
-ln -sf    "${HOME}/.cache/wal/zathurarc"    "${HOME}/.config/zathura/zathurarc"
+mkdir -p "${HOME}/.config/dunst"
+mkdir -p "${HOME}/.config/zathura"
+ln -sf "${HOME}/.cache/wal/dunstrc" "${HOME}/.config/dunst/dunstrc"
+ln -sf "${HOME}/.cache/wal/zathurarc" "${HOME}/.config/zathura/zathurarc"
 
 xrdb -merge ~/.cache/wal/colors.Xresources &
-#xrdb -merge ~/.cache/wal/rofi.xres &
-#sh ~/.config/bspwm/bspwmrc &
 
-pkill dunst; dunst &
+pkill dunst
+dunst &
