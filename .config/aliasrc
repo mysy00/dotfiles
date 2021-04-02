@@ -16,7 +16,8 @@ alias \
 	ffmpeg="ffmpeg -hide_banner" \
 	maim="maim -u" \
 	sudo="sudo " \
-	picom="picom --experimental-backend"
+	picom="picom --experimental-backend" \
+	google-chrome-stable="google-chrome-stable --incognito --force-dark-mode"
 
 # Colorize commands when possible.
 alias \
@@ -28,13 +29,8 @@ alias \
 # These common commands are just too long! Abbreviate them.
 alias \
 	ka="killall" \
-	g="git" \
-	trem="transmission-remote" \
-	YT="youtube-viewer" \
 	sdn="sudo shutdown -h now" \
-	f="$FILE" \
-	e="$EDITOR" \
-	v="$EDITOR" \
+	g="git" \
 	p="sudo pacman" \
 	r="ranger" \
 	o="xdg-open" \

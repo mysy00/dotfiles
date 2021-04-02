@@ -8,16 +8,17 @@ super + space
 
 # Emoji picker
 super + semicolon
-	rofi-generic --input-file "/home/mysy/.config/test.txt" -s " | "
+	rofi-generic --input-file "$XDG_CONFIG_HOME/emojis" -s " | "
 
 # Open terminal
 super + Return
 	$TERMINAL
 
-# Open the main editor
+# Open vim
 super + e
 	$TERMINAL -e $EDITOR
 
+# Open VSCode
 super + c
 	code
 

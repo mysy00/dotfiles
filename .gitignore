@@ -1,20 +1,21 @@
 *
 */*
 
+# If I don't do this, because of "*" every directory will be ignored
+!.config/
+.config/*
+!.local/
+.local/*
+
 !.config/alacritty
 !.config/bat/
 !.config/bspwm/
 !.config/dunst/
 !.config/espanso/
 !.config/fish/config.fish
+!.config/fish/aliases.fish
 !.config/fish/fish_plugins
 !.config/fish/functions/man.fish
-!.config/fish/functions/ll.fish
-!.config/fish/functions/picom.fish
-!.config/fish/functions/r
-!.config/fish/functions/sv
-!.config/fish/functions/svim
-!.config/fish/functions/vim
 !.config/fontconfig/
 !.config/gtk-2.0/
 !.config/gtk-3.0/
@@ -40,14 +41,13 @@
 !.config/picom.conf
 !.config/rofigeneric.rc
 !.config/rofimoji.rc
+!.config/emojis
 !.config/user-dirs.dirs
 !.config/wall.jpg
 !.config/xinitrc
 !.local/bin
 !.local/share/applications/browser
-!.local/share/applications/feh
 !.local/share/applications/img
-!.local/share/applications/svg
 !.local/share/applications/pdf
 !.local/share/applications/text
 !.local/share/applications/torrent
