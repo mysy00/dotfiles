@@ -8,7 +8,7 @@ export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export BROWSER="google-chrome-stable"
+export BROWSER="brave"
 export READER="zathura"
 
 # ~/ Clean-up:
@@ -20,10 +20,12 @@ export XDG_VIDEOS_DIR="$HOME/Videos"
 export XDG_DOCUMENTS_DIR="$HOME/Documents"
 
 export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-export NNN_PLUG='f:finder;o:fzopen;p:preview-tui;d:diffs;t:nmount;v:imgview'
+export NNN_PLUG='f:finder;o:fzopen;p:preview-tui-ext;t:nmount;v:imgview'
 export NNN_FIFO=/tmp/nnn.fifo
 
-#export XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
+export XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
+export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
 export STARSHIP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/starship/starship.toml"
 export NOTMUCH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/notmuch-config"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
@@ -47,6 +49,10 @@ export GRADLE_USER_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/gradle"
 export ANSIBLE_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/ansible/ansible.cfg"
 export PYLINTHOME="${XDG_CACHE_HOME:-$HOME/.cache}/pylint"
 
+# Some programs don't use env variable nor respect XDG rules by default.
+alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
+alias startx='startx "$XDG_CONFIG_HOME/X11/xinitrc"'
+
 # Other program settings:
 export LESS="-R"
 export LESS_TERMCAP_mb=$'\e[6m'         # begin blinking
@@ -59,7 +65,7 @@ export LESS_TERMCAP_se=$'\e[m'          # end standout-mode
 export QT_STYLE_OVERRIDE="gtk2"		# Have QT use gtk2 theme.
 export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications
-export BAT_THEME="Dracula"
+export BAT_THEME="Pywal"
 
 #export PIDSWALLOW_BLACKLIST=''
 export PIDSWALLOW_SWALLOW_COMMAND='bspc node $pwid --flag hidden=on'

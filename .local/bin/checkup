@@ -1,95 +1,18 @@
-#!/usr/bin/env python3
+#!/bin/sh
 
-import sys
-import getopt
-import os
-import subprocess
+if ! [[ $(curl -Is  1.1.1.1) ]]; then 
+  echo "No Internet"
+  exit
+fi
 
-try:
-    import httplib
-except:
-    import http.client as httplib
+if ! updates_arch=$(checkupdates 2> /dev/null | wc -l ); then
+  updates_arch=0
+fi
 
-def internet_on():
-    conn = httplib.HTTPConnection("1.1.1.1", timeout=5)
-    try:
-        conn.request("HEAD", "/")
-        conn.close()
-        return True
-    except:
-        conn.close()
-        return False
+if ! updates_aur=$(yay -Qua 2> /dev/null | wc -l); then
+  updates_aur=0
+fi
 
-if not (internet_on()):
-    print("No Internet")
-    sys.exit(2)
+updates=$(("$updates_arch" + "$updates_aur"))
 
-repo = "arch" # Default repository
-pacman_updates_file = os.environ['HOME'] + "/.cache/check-updates.txt"
-aur_updates_file = os.environ['HOME'] + "/.cache/check-updates-aur.txt"
-
-if (repo == "arch"):
-    updates_log = pacman_updates_file
-else:
-    updates_log = aur_updates_file
-
-
-# If you are not running this as root user,
-# Please edit your sudoers file to let the user run yay -Syy and checkupdates.
-def refresh_database(updates_log, repo):
-    if (repo == "arch"):
-        with open(updates_log, "w") as logfile:
-            subprocess.call(["checkupdates"], stdout=logfile, shell=False)
-    else:
-        with open(updates_log, "w") as logfile:
-            subprocess.call(["paru", "-Qua"], stdout=logfile, shell=False)
-
-
-def count_updates(updates_log):
-    return sum(1 for line in open(updates_log))
-
-
-def show_help():
-    print ("-r, --repo    — specify repository,")
-    print("                 either 'arch' (pacman-contrib required) or 'aur' (paru required)")
-    print ("-f, --refresh — refresh repository")
-    print ("-c, --count   — count available updates")
-    print ("-n, --notify  — send a notification with updates")
-
-
-def notify():
-    if count_updates(updates_log) > 0:
-        os.system('notify-send "Updates available" "$(cat ' + updates_log + ')"')
-    else:
-        os.system('notify-send "No updates available" "You\'re good."')
-
-
-def main(argv):
-    try:
-        opts, args = getopt.getopt(argv, "hr:cnf", ["help", "refresh", "repo=", "count", "notify"])
-    except getopt.GetoptError as err:
-        show_help
-        print(err)
-        sys.exit(2)
-    for opt, arg in opts:
-        if opt in ("-h", "--help"):
-            show_help()
-        elif opt in ("-r", "--repo"):
-            if (arg == "arch"):
-                repo = "arch"
-                updates_log = pacman_updates_file
-            elif (arg == "aur"):
-                repo = "aur"
-                updates_log = aur_updates_file
-            else:
-                print("Allowed --repo values: 'arch', 'aur'")
-                sys.exit(2)
-        elif opt in ("-f", "--refresh"):
-            refresh_database(updates_log, repo)
-        elif opt in ("-c", "--count"):
-            print(count_updates(updates_log))
-        elif opt in ("-n", "--notify"):
-            notify()
-
-if __name__ == "__main__":
-    main(sys.argv[1:])
+echo $updates

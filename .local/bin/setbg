@@ -15,7 +15,7 @@ bgloc="${XDG_DATA_HOME:-$HOME/.local/share/}/bg"
 
 # If pywal is installed, use it.
 #wal -n -b "#000000" -i "$(readlink -f "$bgloc")" -o "${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
-wal -in "$(readlink -f "$bgloc")" -o "$HOME/.config}/wal/postrun" > /dev/null 2>&1
+wal -n -i "$(readlink -f "$bgloc")" -o "$HOME/.config}/wal/postrun" > /dev/null 2>&1
 
 hsetroot -cover "$(readlink -f "$bgloc")" 1> /dev/null
 
@@ -24,8 +24,11 @@ source "${HOME}/.cache/wal/colors.sh"
 
 mkdir -p "${HOME}/.config/dunst"
 mkdir -p "${HOME}/.config/zathura"
+mkdir -p "${HOME}/.config/bat/themes/Pywal"
 ln -sf "${HOME}/.cache/wal/dunstrc" "${HOME}/.config/dunst/dunstrc"
 ln -sf "${HOME}/.cache/wal/zathurarc" "${HOME}/.config/zathura/zathurarc"
+ln -sf "${HOME}/.cache/wal/colors.tmTheme" "${HOME}/.config/bat/themes/Pywal/Pywal.tmTheme"
+
 
 xrdb -merge ~/.cache/wal/colors.Xresources &
 

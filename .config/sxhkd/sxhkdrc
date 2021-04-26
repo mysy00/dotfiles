@@ -14,6 +14,10 @@ super + semicolon
 super + Return
 	$TERMINAL
 
+# Open recording menu
+super + r
+	recorder
+
 # Open vim
 super + e
 	$TERMINAL -e $EDITOR

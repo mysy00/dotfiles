@@ -13,6 +13,10 @@ alias sudo="sudo "
 alias picom="picom --experimental-backend"
 alias google-chrome-stable="google-chrome-stable --incognito --force-dark-mode"
 
+# Some programs don't use env variable nor respect XDG rules by default.
+alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
+alias startx="startx $XDG_CONFIG_HOME/X11/xinitrc" 
+
 # Colorize commands when possible.
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"

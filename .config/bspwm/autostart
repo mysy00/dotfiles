@@ -5,8 +5,8 @@
 
 launch_polybar --silent &
 
-picom -b --experimental-backends &			# picom for transparency
-xset r rate 170 60 &										# Speed xrate up
-setxkbmap pl &													# Set default keyboard layout
-setxkbmap -option caps:swapescape & 			# Swap capslock with escape
-unclutter &															# Remove mouse when idle
+picom -b --experimental-backends			# picom for transparency
+xset r rate 170 60										# Speed xrate up
+setxkbmap pl													# Set default keyboard layout
+setxkbmap -option caps:swapescape			# Swap capslock with escape
+unclutter															# Remove mouse when idle

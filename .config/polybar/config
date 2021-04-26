@@ -43,7 +43,6 @@ padding-right = 2
 module-margin-left = 2
 module-margin-right = 2
 
-;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-0 = fixed:pixelsize=10;1
 font-1 = FontAwesome5Free:style=regular:pixelsize=11;2
 font-2 = FontAwesome5Free:style=solid:pixelsize=11;2
@@ -51,7 +50,7 @@ font-3 = FontAwesome:style=Regular;2
 font-4 = Ionicons:style=Regular;2
 
 modules-left = bspwm xwindow
-modules-right = mpd updates updatesaur xbacklight xkeyboard bluetooth wlan eth memory cpu fanspeed temperature pulseaudio battery date dunst
+modules-right = mpd updates xbacklight xkeyboard bluetooth wlan eth memory cpu fanspeed temperature pulseaudio battery date dunst
 
 tray-position = right
 tray-padding = 2
@@ -64,39 +63,29 @@ scroll-down = bspwm-deskprev
 cursor-click = pointer
 cursor-scroll = default
 
+enable-ipc = true
+
 [module/bspwm]
 type = internal/bspwm
-; Note that the <label> needs to correspond with the bspwm workspace name
-#ws-icon-0 = "web;%{T5}%{T-}"
-#ws-icon-1 = "code;%{T5}%{T-}"
-#ws-icon-2 = "term;%{T5}%{T-}"
-#ws-icon-3 = "social;%{T5}%{T-}"
-#ws-icon-4 = "movie;%{T5}%{T-}"
-#ws-icon-5 = "music;%{T5}%{T-}"
-#ws-icon-6 = "prn;%{T5}%{T-}"
-#ws-icon-default = "%{T5}%{T-}"
 
-#format = <label-state> <label-mode>
-
-#label-focused = %icon%
 label-focused-background = ${colors.background-alt}
 label-focused-foreground = ${colors.background}
 label-focused-padding = 2
 
 label-occupied-padding = 2
 
-#label-urgent = %index%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
-
-#label-dimmed-foreground = #777
 
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
+enable-click = false
+enable-scroll = false
+
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title:0:70:...%
 
 [module/mpd]
 type = internal/mpd
@@ -113,41 +102,22 @@ label-song-ellipsis = true
 
 [module/updates]
 type = custom/script
-exec = checkup -r "arch" -c
-click-left = checkup -r "arch" -n
+exec = checkup
 interval = 3600
 
 format = <label>
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 
-[module/updatesaur]
-type = custom/script
-#exec = checkup -r "aur" -c
-#click-left = "checkup -r "aur" -n
-#interval = 3600
-#
-#format = <label>
-#format-prefix = " "
-#format-prefix-foreground = ${colors.foreground-alt}
+click-left = polybar-msg hook updates 1
 
 [module/xbacklight]
 type = internal/xbacklight
 
-format = <label> <bar>
-label = 
-label-foreground = ${colors.foreground-alt}
-
-bar-width = 5
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+format = <label>
+format-prefix = " "
+label = %percentage%%
+format-prefix-foreground = ${colors.foreground-alt}
 
 [module/backlight-acpi]
 inherit = module/xbacklight
@@ -186,9 +156,6 @@ format-connected-foreground = ${colors.foreground-alt}
 label-connected = %essid%
 
 format-disconnected = DISC
-;format-disconnected = <label-disconnected>
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 =  0
 ramp-signal-1 =  1
@@ -260,7 +227,6 @@ type = internal/pulseaudio
 format-prefix = asdasd
 format-volume = <ramp-volume> <label-volume>
 format-muted-underline = ${xrdb:color5}
-#label-volume = ${env:PULSEAUDIO_MODULE_LABEL}
 label-volume-foreground = ${root.foreground}
 
 label-muted =  muted
@@ -317,20 +283,15 @@ format-prefix-foreground = ${colors.foreground-alt}
 label = %date% %time%
 
 [module/dunst]
-type = custom/script
-exec = ~/.config/polybar/scripts/dunst-status.sh
-tail = true
-click-left = dunstctl set-paused toggle && kill -USR1 %pid%
-
+type = custom/ipc
+initial = 1
 format-foreground = ${colors.foreground-alt}
+
+hook-0 = echo "%{A1:notify-send "DUNST_COMMAND_PAUSE" && polybar-msg hook dunst 2:}%{A}" &
+hook-1 = echo "%{A1:notify-send "DUNST_COMMAND_RESUME" && polybar-msg hook dunst 1:}%{A}" &
 
 [settings]
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
 
 [global/wm]
 margin-top = 5
