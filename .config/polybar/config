@@ -157,11 +157,11 @@ label-connected = %essid%
 
 format-disconnected = DISC
 
-ramp-signal-0 =  0
-ramp-signal-1 =  1
-ramp-signal-2 =  2
-ramp-signal-3 =  3
-ramp-signal-4 =  4
+ramp-signal-0 = 0
+ramp-signal-1 = 1
+ramp-signal-2 = 2
+ramp-signal-3 = 3
+ramp-signal-4 = 4
 ramp-signal-foreground = ${colors.foreground}
 
 [module/eth]
@@ -287,8 +287,8 @@ type = custom/ipc
 initial = 1
 format-foreground = ${colors.foreground-alt}
 
-hook-0 = echo "%{A1:notify-send "DUNST_COMMAND_PAUSE" && polybar-msg hook dunst 2:}%{A}" &
-hook-1 = echo "%{A1:notify-send "DUNST_COMMAND_RESUME" && polybar-msg hook dunst 1:}%{A}" &
+hook-0 = echo "%{A1:dunstctl set-paused true && polybar-msg hook dunst 2:}%{A}" &
+hook-1 = echo "%{A1:dunstctl set-paused false && polybar-msg hook dunst 1:}%{A}" &
 
 [settings]
 screenchange-reload = true

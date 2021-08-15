@@ -23,7 +23,6 @@ Plug 'ap/vim-css-color'
 Plug 'lervag/vimtex'
 Plug 'georgewitteman/vim-fish'
 Plug 'sheerun/vim-polyglot'
-Plug 'Yggdroot/indentLine'
 Plug 'rhysd/vim-clang-format'
 Plug 'z0mbix/vim-shfmt', {'for': 'sh'}
 call plug#end()

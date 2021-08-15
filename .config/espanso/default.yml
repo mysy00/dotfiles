@@ -23,37 +23,37 @@ matches:
   - trigger: ":joy4"
     replace: "(◠‿◠)"
 
-  - trigger: ":love"
+  - trigger: ":love1"
     replace: "ヽ(♡‿♡)ノ"
 
-  - trigger: ":love1"
+  - trigger: ":love2"
     replace: "(❤ω❤)"
 
-  - trigger: ":love2"
+  - trigger: ":love3"
     replace: "╰(*´︶`*)╯♡"
 
-  - trigger: ":love3"
+  - trigger: ":love4"
     replace: "(´♡‿♡`)"
 
-  - trigger: ":love4"
+  - trigger: ":love5"
     replace: "(◕‿◕)♡"
 
-  - trigger: ":love5"
+  - trigger: ":love6"
     replace: "( ´ ∀ `)ノ～ ♡"
 
-  - trigger: ":love6"
+  - trigger: ":love7"
     replace: "♡＼(￣▽￣)／♡"
 
   - trigger: ":kiss"
     replace: "(っ˘з(˘⌣˘ ) ♡"
 
-  - trigger: ":embarrassment"
+  - trigger: ":embarrassment1"
     replace: "(⁄ ⁄•⁄ω⁄•⁄ ⁄)"
 
-  - trigger: ":embarrassment1"
+  - trigger: ":embarrassment2"
     replace: "(⁄ ⁄>⁄ ▽ ⁄<⁄ ⁄)"
 
-  - trigger: ":embarrassment2"
+  - trigger: ":embarrassment3"
     replace: "(*μ_μ)"
 
   - trigger: ":ohstopit"
@@ -65,22 +65,22 @@ matches:
   - trigger: ":angry"
     replace: "(」°ロ°)」"
 
-  - trigger: ":fuckyou"
+  - trigger: ":fuckyou1"
     replace: "凸(￣ヘ￣)"
 
-  - trigger: ":fuckyou1"
+  - trigger: ":fuckyou2"
     replace: "凸( ` ﾛ ´ )凸"
 
   - trigger: ":furious"
     replace: "(ノ°益°)ノ"
 
-  - trigger: ":sad"
+  - trigger: ":sad1"
     replace: "(╯_╰)"
 
-  - trigger: ":sad1"
+  - trigger: ":sad2"
     replace: "(╯︵╰,)"
 
-  - trigger: ":sad2"
+  - trigger: ":sad3"
     replace: "(｡•́︿•̀｡)"
 
   - trigger: ":dead"
@@ -95,10 +95,10 @@ matches:
   - trigger: ":meh"
     replace: "┐( ˘､˘ )┌	"
 
-  - trigger: ":wat"
+  - trigger: ":wat1"
     replace: "(•ิ_•ิ)?"
 
-  - trigger: ":wat1"
+  - trigger: ":wat2"
     replace: "(・・ ) ?"
 
   - trigger: ":shock"
@@ -107,10 +107,10 @@ matches:
   - trigger: ":shock1"
     replace: ""
 
-  - trigger: ":hi"
+  - trigger: ":hi1"
     replace: "(°▽°)/"
 
-  - trigger: ":hi1"
+  - trigger: ":hi2"
     replace: "(￣▽￣)ノ"
 
   - trigger: ":wink"
@@ -119,22 +119,22 @@ matches:
   - trigger: ":sorry"
     replace: "(シ. .)シ"
 
-  - trigger: ":run"
+  - trigger: ":run1"
     replace: "C= C= C= C=┌( `ー´)┘"
 
-  - trigger: ":run1"
+  - trigger: ":run2"
     replace: "C= C= C= C= C=┌(;・ω・)┘"
 
-  - trigger: ":sleep"
+  - trigger: ":sleep1"
     replace: "(－_－) zzZ"
 
-  - trigger: ":sleep1"
+  - trigger: ":sleep2"
     replace: "(￣o￣) zzZZzzZZ"
 
-  - trigger: ":bear"
+  - trigger: ":bear1"
     replace: "ʕ •ᴥ• ʔ"
 
-  - trigger: ":bear1"
+  - trigger: ":bear2"
     replace: "ʕ ᵔᴥᵔ ʔ"
 
   - trigger: ":lenny"

@@ -24,8 +24,8 @@ key_bindings:
   #- { key: PageDown,  mods: Shift,   mode: ~Alt, action: ScrollPageDown }
   #- { key: Home,      mods: Shift,   mode: ~Alt, action: ScrollToTop,   }
   #- { key: End,       mods: Shift,   mode: ~Alt, action: ScrollToBottom,}
-  - { key: Y,          mods: Control, mode: ~Alt, action: ScrollLineUp   }
-  - { key: E,          mods: Control, mode: ~Alt, action: ScrollLineDown }
+  - { key: Y,          mods: Control, action: ScrollLineUp   }
+  - { key: E,          mods: Control, action: ScrollLineDown }
 
   # (Windows, Linux, and BSD only)
   #- { key: V,        mods: Control|Shift,           action: Paste            }

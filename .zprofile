@@ -65,7 +65,7 @@ export LESS_TERMCAP_se=$'\e[m'          # end standout-mode
 export QT_STYLE_OVERRIDE="gtk2"		# Have QT use gtk2 theme.
 export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications
-export BAT_THEME="Pywal"
+export BAT_THEME="base16"
 
 #export PIDSWALLOW_BLACKLIST=''
 export PIDSWALLOW_SWALLOW_COMMAND='bspc node $pwid --flag hidden=on'
