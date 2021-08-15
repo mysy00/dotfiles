@@ -52,7 +52,7 @@ font-4 = Ionicons:style=Regular;2
 modules-left = bspwm xwindow
 modules-right = mpd updates xbacklight xkeyboard bluetooth wlan eth memory cpu fanspeed temperature pulseaudio battery date dunst
 
-tray-position = right
+tray-position = ${env:TRAY_POS:}
 tray-padding = 2
 
 wm-restack = bspwm
