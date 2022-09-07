@@ -1,5 +1,31 @@
-let mapleader = ","
+if exists('g:vscode')
+function! s:openVSCodeCommandsInVisualMode()
+    normal! gv
+    let visualmode = visualmode()
+    if visualmode == "V"
+        let startLine = line("v")
+        let endLine = line(".")
+        call VSCodeNotifyRange("workbench.action.showCommands", startLine, endLine, 1)
+    else
+        let startPos = getpos("v")
+        let endPos = getpos(".")
+        call VSCodeNotifyRangePos("workbench.action.showCommands", startPos[1], endPos[1], startPos[2], endPos[2], 1)
+    endif
+endfunction
 
+nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
+xnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
+nnoremap <silent> <C-k> :call VSCodeNotify('workbench.action.navigateUp')<CR>
+xnoremap <silent> <C-k> :call VSCodeNotify('workbench.action.navigateUp')<CR>
+nnoremap <silent> <C-h> :call VSCodeNotify('workbench.action.navigateLeft')<CR>
+xnoremap <silent> <C-h> :call VSCodeNotify('workbench.action.navigateLeft')<CR>
+nnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
+xnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
+
+xnoremap <silent> <C-P> :<C-u>call <SID>openVSCodeCommandsInVisualMode()<CR>
+endif
+
+let mapleader = ","
 let g:vimtex_view_method = 'zathura'
 let g:tex_flavor = 'latex'
 let g:csv_no_conceal = 1
@@ -24,6 +50,8 @@ Plug 'lervag/vimtex'
 Plug 'georgewitteman/vim-fish'
 Plug 'sheerun/vim-polyglot'
 Plug 'rhysd/vim-clang-format'
+Plug 'machakann/vim-highlightedyank'
+Plug 'easymotion/vim-easymotion'
 Plug 'z0mbix/vim-shfmt', {'for': 'sh'}
 call plug#end()
 
@@ -122,11 +150,13 @@ map <leader>s :!clear && shellcheck %<CR>
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
 
-" Automatically format programming files.
-	" C#, Java
-	autocmd BufWritePost *.cs,*.java !astyle %
-
 	" C, C++
 	autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 	autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 
+	if !exists('g:vscode')
+" Automatically format programming files.
+	" C#, Java
+	autocmd BufWritePost *.cs,*.java !astyle %
+
+endif

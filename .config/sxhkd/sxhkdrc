@@ -34,9 +34,9 @@ super + b
 super + d
 	discord
 
-# Open Thunar
+# Open File Explorer
 super + f
-	$TERMINAL -e ranger
+	$TERMINAL -e nnn -a
 
 # Open Bluetooth manager
 super + t
@@ -104,7 +104,7 @@ super + shift + p
 
 # Switch floating state on a window
 super + shift + t
-	{bspc node -t floating && window-placer $(bspc query -T -d | grep -o '"state":"floating"' | wc -l),bspc node -t tiled}
+	{bspc node -t floating,bspc node -t tiled}
 
 # Make window sticky
 super + shift + s
@@ -142,13 +142,9 @@ super + shift + r
 super + shift + f
 	bspc node -t {fullscreen,tiled}
 
-# Balance tree
-super + shift + b
-	bspc node @/ -B
-
 # Rotate leaves of tree
 super + shift + {colon,quotedbl}
-	bspc node @/ -R {90,270}
+	bspc node @/ -R {270,90}
 
 # Mirror and flip leaves of tree
 super + shift + {bracketleft,bracketright}
@@ -162,9 +158,9 @@ super + shift + {comma,period}
 # super + ctrl
 # #######
 
-# Cleanly quit bspwm
+# Restart, shutdown the system
 super + ctrl + q
-	bspc quit 1 && killall polybar
+	sysact
 
 # Restart bspwm
 super + ctrl + r
@@ -219,7 +215,10 @@ super + ctrl + shift + {1-9}
 	bspc node -m ^{1-9} && bspc monitor -f ^{1-9}
 
 # Move node to the prev/next monitor
-super + ctrl + shift + {period,comma}
+super + ctrl + shift + {h,l}
+	bspc node -m {prev,next} && bspc monitor -f {prev,next}
+
+super + ctrl + shift + {Left,Right}
 	bspc node -m {prev,next} && bspc monitor -f {prev,next}
 
 # #######
@@ -248,13 +247,6 @@ super + alt + {Left,Down,Up,Right}
 super + alt + shift + space
 	auto-presel
 
-# #######
-# alt
-# #######
-
-# cycle windows
-alt + {_,shift + }Tab
-    bspc node -f {next,prev}
 
 # #######
 # alt + shift
