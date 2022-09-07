@@ -3,13 +3,14 @@
 # zsh profile file. Runs on login. Environmental variables are set here.
 
 # Adds `~/.local/bin` to $PATH
-export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
+export PATH=$PATH$( find $HOME/.local/bin/ -type d -printf ":%p" )
 
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="brave"
 export READER="zathura"
+export FILE_EXPLORER="nnn"
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -19,9 +20,10 @@ export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_VIDEOS_DIR="$HOME/Videos"
 export XDG_DOCUMENTS_DIR="$HOME/Documents"
 
-export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-export NNN_PLUG='f:finder;o:fzopen;p:preview-tui-ext;t:nmount;v:imgview'
 export NNN_FIFO=/tmp/nnn.fifo
+export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+export NNN_PLUG='f:finder;o:fzopen;e:-!sudo -E vim $nnn*;x:!chmod +x $nnn;p:preview-tui;v:imgview'
+export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
 
 export XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
 export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
@@ -74,3 +76,4 @@ export PIDSWALLOW_PREGLUE_HOOK='bspc query -N -n $pwid.floating >/dev/null && bs
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+

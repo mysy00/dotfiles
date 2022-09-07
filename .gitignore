@@ -17,6 +17,7 @@
 !.config/fontconfig/
 !.config/gtk-2.0/
 !.config/gtk-3.0/
+!.config/handlr/
 !.config/mpd/
 !.config/mpv/
 !.config/ncmpcpp/
@@ -43,6 +44,7 @@
 !.config/user-dirs.dirs
 !.config/wall.jpg
 !.config/xinitrc
+
 !.local/bin
 !.local/share/applications/browser
 !.local/share/applications/img
