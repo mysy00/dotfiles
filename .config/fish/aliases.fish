@@ -10,8 +10,9 @@ alias yta="yt -x -f bestaudio/best"
 alias ffmpeg="ffmpeg -hide_banner"
 alias maim="maim -u"
 alias sudo="sudo "
-alias picom="picom --experimental-backend"
+#alias picom="picom --experimental-backend"
 alias google-chrome-stable="google-chrome-stable --incognito --force-dark-mode"
+alias lf="lfub"
 
 # Some programs don't use env variable nor respect XDG rules by default.
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
@@ -21,7 +22,7 @@ alias startx="startx $XDG_CONFIG_HOME/X11/xinitrc"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ls="lsd -h --color always --group-dirs first --icon-theme fancy"
-alias ll="lsd -lhA --color always --group-dirs first --icon-theme fancy"
+alias ll="echo 'zawsze i wszędzie pis i konfederacja jebana będzie' && lsd -lhA --color always --group-dirs first --icon-theme fancy"
 
 # These common commands are just too long! Abbreviate them.
 alias ka="killall"

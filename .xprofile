@@ -10,6 +10,7 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 mpd &				# music player daemon-you might prefer it as a service though
 setbg &			# set the background with the `setbg` script
 dunst &			# dunst for notifications
+darkman run	# Auto darkmode/lightmode toggle
 
 ## Powersaving options
 xbacklight -set 55 &

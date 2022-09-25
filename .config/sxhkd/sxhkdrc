@@ -8,7 +8,8 @@ super + space
 
 # Emoji picker
 super + semicolon
-	rofi-generic --input-file "$XDG_CONFIG_HOME/emojis" -s " | "
+	kaomoji
+	#	rofi-generic --input-file "$XDG_CONFIG_HOME/emojis" -s " | "
 
 # Open terminal
 super + Return
@@ -158,10 +159,6 @@ super + shift + {comma,period}
 # super + ctrl
 # #######
 
-# Restart, shutdown the system
-super + ctrl + q
-	sysact
-
 # Restart bspwm
 super + ctrl + r
 	bspc wm -r
@@ -204,7 +201,7 @@ super + ctrl + b
 # Toggle compositing
 super + ctrl + shift + space
 	{pkill picom ,\
-	picom --experimental-backends}
+	picom}
 
 # Presel window for splitting in certain direction (receptacles)
 super + ctrl + shift + {a,s,w,d}
@@ -243,11 +240,6 @@ super + alt + {Left,Down,Up,Right}
 # super + alt + shift
 # #######
 
-# Split window in its largest dimension
-super + alt + shift + space
-	auto-presel
-
-
 # #######
 # alt + shift
 # #######
@@ -264,9 +256,15 @@ alt + shift + 4
 # Other
 # #######
 
+alt + {_,shift + }Tab
+ 	bspc node -f {next,prev}.local.!hidden.window 
+
 # Take a pretty screenshot of focused window
 Print
 	prettyscreenshot
+
+shift + Print
+	maimpick
 
 XF86AudioRaiseVolume
 	volume up

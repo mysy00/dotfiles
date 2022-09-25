@@ -41,6 +41,8 @@ bspc rule -a '*:libreofficedev' state=tiled
 bspc rule -a '*:soffice' state=tiled
 bspc rule -a 'Zathura' state=tiled
 bspc rule -a 'packettracer5.exe' state=floating
+#bspc rule -a "gta_sa.exe" manage=off #state=fullscreen
+bspc rule -a "samp.exe" state=floating
 
 ## Autostart apps
 . $HOME/.config/bspwm/autostart
