@@ -44,6 +44,7 @@
 !.config/user-dirs.dirs
 !.config/wall.jpg
 !.config/xinitrc
+!.config/kaomoji.txt
 
 !.local/bin
 !.local/share/applications/browser

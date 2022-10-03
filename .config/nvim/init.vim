@@ -1,30 +1,3 @@
-if exists('g:vscode')
-function! s:openVSCodeCommandsInVisualMode()
-    normal! gv
-    let visualmode = visualmode()
-    if visualmode == "V"
-        let startLine = line("v")
-        let endLine = line(".")
-        call VSCodeNotifyRange("workbench.action.showCommands", startLine, endLine, 1)
-    else
-        let startPos = getpos("v")
-        let endPos = getpos(".")
-        call VSCodeNotifyRangePos("workbench.action.showCommands", startPos[1], endPos[1], startPos[2], endPos[2], 1)
-    endif
-endfunction
-
-nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
-xnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
-nnoremap <silent> <C-k> :call VSCodeNotify('workbench.action.navigateUp')<CR>
-xnoremap <silent> <C-k> :call VSCodeNotify('workbench.action.navigateUp')<CR>
-nnoremap <silent> <C-h> :call VSCodeNotify('workbench.action.navigateLeft')<CR>
-xnoremap <silent> <C-h> :call VSCodeNotify('workbench.action.navigateLeft')<CR>
-nnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
-xnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
-
-xnoremap <silent> <C-P> :<C-u>call <SID>openVSCodeCommandsInVisualMode()<CR>
-endif
-
 let mapleader = ","
 let g:vimtex_view_method = 'zathura'
 let g:tex_flavor = 'latex'
@@ -69,7 +42,6 @@ set noshowmode
 
 " Some basics:
 	nnoremap c "_c
-	set nocompatible
 	filetype plugin on
 	syntax on
 	set encoding=utf-8
@@ -114,34 +86,29 @@ set noshowmode
 " Check file in shellcheck:
 	map <leader>s :!clear && shellcheck -x %<CR>
 
-map <leader>s :!clear && shellcheck %<CR>
-
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>
 
 " Compile document, be it groff/LaTeX/markdown/etc.
-	map <leader>c :w! \| !compiler "<c-r>%"<CR>
-
-" Open corresponding .pdf/.html or preview
-	map <leader>p :!opout <c-r>%<CR><CR>
+	map <leader>c :w! \| !compiler "%:p"<CR>
 
 " Runs a script that cleans out tex build files whenever I close out of a .tex file.
 	autocmd VimLeave *.tex !texclear %
 
 " Ensure files are read as what I want:
-	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
 	autocmd BufRead,BufNewFile *.rasi set filetype=css
 
 " Save file as sudo on files that require root permission (doesn't work for some reason, TODO: look into it)
-	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-	command W w !sudo tee % > /dev/null
+	cabbrev w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
+	"autocmd BufWritePre * let currPos = getpos(".")
 	"autocmd BufWritePre * %s/\s\+$//e
 	"autocmd BufWritePre * %s/\n\+\%$//e
 	"autocmd BufWritePre *.[ch] %s/\%$/\r/e
+  "autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
 
 " Run xrdb whenever Xdefaults or Xresources are updated.
 	autocmd BufRead,BufNewFile Xresources,Xdefaults,xresources,xdefaults set filetype=xdefaults
@@ -154,9 +121,7 @@ map <leader>s :!clear && shellcheck %<CR>
 	autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 	autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 
-	if !exists('g:vscode')
 " Automatically format programming files.
 	" C#, Java
 	autocmd BufWritePost *.cs,*.java !astyle %
 
-endif
