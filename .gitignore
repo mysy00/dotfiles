@@ -19,7 +19,9 @@
 !.config/gtk-3.0/
 !.config/handlr/
 !.config/helix/
+!.config/helix/*
 !.config/lf/
+!.config/lf/*
 !.config/mpd/
 !.config/mpv/
 !.config/ncmpcpp/
