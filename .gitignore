@@ -26,6 +26,7 @@
 !.config/mpv/
 !.config/ncmpcpp/
 !.config/newsboat/
+!.config/nvim/
 !.config/nvim/init.vim
 !.config/paru/
 !.config/polybar/

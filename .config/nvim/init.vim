@@ -2,6 +2,7 @@ let mapleader = ","
 let g:vimtex_view_method = 'zathura'
 let g:tex_flavor = 'latex'
 let g:csv_no_conceal = 1
+let g:airline_extensions = ['vimagit']
 
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
