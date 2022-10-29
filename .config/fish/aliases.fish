@@ -22,7 +22,7 @@ alias startx="startx $XDG_CONFIG_HOME/X11/xinitrc"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ls="lsd -h --color always --group-dirs first --icon-theme fancy"
-alias ll="echo 'zawsze i wszędzie pis i konfederacja jebana będzie' && lsd -lhA --color always --group-dirs first --icon-theme fancy"
+alias ll="lsd -lhA --color always --group-dirs first --icon-theme fancy"
 
 # These common commands are just too long! Abbreviate them.
 alias ka="killall"

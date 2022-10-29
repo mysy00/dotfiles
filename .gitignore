@@ -51,7 +51,8 @@
 !.config/xinitrc
 !.config/kaomoji.txt
 
-!.local/bin
+!.local/bin/
+!.local/bin/*
 !.local/share/applications/browser
 !.local/share/applications/img
 !.local/share/applications/pdf

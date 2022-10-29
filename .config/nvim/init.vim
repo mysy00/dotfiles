@@ -29,6 +29,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'z0mbix/vim-shfmt', {'for': 'sh'}
 call plug#end()
 
+"autocmd lua require('gitsigns').setup()
+
 " Add fish support.
 autocmd FileType fish compiler fish
 autocmd FileType fish setlocal textwidth=79

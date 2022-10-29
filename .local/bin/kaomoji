@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+current_wid=$(xdo id)
+selection=$(rofi -i -dmenu $@ < $HOME/.config/kaomoji.txt)
+kaomoji=$(echo $selection | sed 's/\s|\s.*//')
+echo -n "$kaomoji" | xclip -selection clipboard
+xdotool key --window $current_wid --clearmodifiers ctrl+v
